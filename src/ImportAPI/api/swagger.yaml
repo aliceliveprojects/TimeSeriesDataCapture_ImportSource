@@ -1,0 +1,101 @@
+---
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.5.0"
+  title: "TimeSeriesDataCapture"
+  contact:
+    name: "TimeSeriesDataCapture@gmail.com"
+    email: "TimeSeriesDataCapture@gmail.com"
+host: "localhost:8000"
+basePath: "/apis"
+tags:
+- name: "Import Source"
+  description: "Getting components from file storage"
+schemes:
+- "http"
+- "https"
+paths:
+  /Components:
+    post:
+      tags:
+      - "Import Source"
+      summary: "Gets IDs available for import"
+      description: "Gets all the component IDs available for import"
+      operationId: "getComponentIDs"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "componentIDs"
+        required: true
+        schema:
+          type: "array"
+          description: "Array of component objects"
+          items:
+            type: "string"
+            example: "component_id"
+            description: "specific component ID"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            description: "Array of component objects"
+            items:
+              type: "string"
+              example: "component_id"
+              description: "specific component ID"
+        400:
+          description: "Bad request"
+        401:
+          description: "Unauthorized"
+      x-swagger-router-controller: "ImportSource"
+  /Component/{componentID}:
+    get:
+      tags:
+      - "Import Source"
+      summary: "Downloads a specific component"
+      description: "Downloads a specific component by component ID"
+      operationId: "getComponent"
+      produces:
+      - "application/octet-stream"
+      parameters:
+      - name: "componentID"
+        in: "path"
+        description: "Component ID specifies which component to download "
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "file"
+        400:
+          description: "Bad Request"
+        401:
+          description: "Unauthorized"
+      x-swagger-router-controller: "ImportSource"
+  /Operations:
+    get:
+      tags:
+      - "Import Source"
+      summary: "Gets supported operations"
+      description: "Gets currently supported operations"
+      operationId: "getOperations"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            description: "Array of operations"
+            items:
+              type: "string"
+              example: "Compare"
+        400:
+          description: ""
+      x-swagger-router-controller: "ImportSource"
+definitions: {}
