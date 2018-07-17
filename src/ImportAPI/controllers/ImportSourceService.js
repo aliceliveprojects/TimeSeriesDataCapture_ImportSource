@@ -1,5 +1,6 @@
 'use strict';
-
+var httpUtil = require('../util/http/http');
+var importService = require('../util/import/import');
 
 /**
  * Downloads a specific component
@@ -8,15 +9,16 @@
  * componentID String Component ID specifies which component to download 
  * returns File
  **/
-exports.getComponent = function(componentID) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+exports.getComponent = function(args,res,next) {
+  let componentID = args.componentID.value;
+
+  importService.getComponent(componentID)
+  .then((result) => {
+    httpUtil.endHttpOK(result,res);
+  })
+  .catch((error) => {
+    httpUtil.endHttpErr(error,res)
+  })
 }
 
 
@@ -27,16 +29,16 @@ exports.getComponent = function(componentID) {
  * componentIDs List 
  * returns List
  **/
-exports.getComponentIDs = function(componentIDs) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ "component_id", "component_id" ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+exports.getComponentIDs = function(args,res,next) {
+  let componentIDs = args.componentIDs.value;
+
+  importService.getComponentIDs(componentIDs)
+  .then((result) => {
+    httpUtil.endHttpOK(result,res);
+  })
+  .catch((error) => {
+    httpUtil.endHttpErr(error,res)
+  })
 }
 
 
@@ -46,15 +48,13 @@ exports.getComponentIDs = function(componentIDs) {
  *
  * returns List
  **/
-exports.getOperations = function() {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ "Compare", "Compare" ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+exports.getOperations = function(args,res,next) {
+  importService.getOperations()
+  .then((result) => {
+    httpUtil.endHttpOK(result,res);
+  })
+  .catch((error) => {
+    httpUtil.endHttpErr(error,res)
+  })
 }
 
