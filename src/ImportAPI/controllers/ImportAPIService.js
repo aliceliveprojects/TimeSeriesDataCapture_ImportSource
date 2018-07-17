@@ -17,7 +17,7 @@ exports.getComponent = function(args,res,next) {
     httpUtil.endHttpOK(result,res);
   })
   .catch((error) => {
-    httpUtil.endHttpErr(error,res)
+    httpUtil.endHttpErr(error,res);
   })
 }
 
@@ -29,15 +29,15 @@ exports.getComponent = function(args,res,next) {
  * componentIDs List 
  * returns List
  **/
-exports.getComponentIDs = function(args,res,next) {
+exports.postComponentIDs = function(args,res,next) {
   let componentIDs = args.componentIDs.value;
 
-  importService.getComponentIDs(componentIDs)
+  importService.postComponentIDs(componentIDs)
   .then((result) => {
     httpUtil.endHttpOK(result,res);
   })
   .catch((error) => {
-    httpUtil.endHttpErr(error,res)
+    httpUtil.endHttpErr(error,res);
   })
 }
 
@@ -54,7 +54,7 @@ exports.getOperations = function(args,res,next) {
     httpUtil.endHttpOK(result,res);
   })
   .catch((error) => {
-    httpUtil.endHttpErr(error,res)
+    httpUtil.endHttpErr(error,res);
   })
 }
 

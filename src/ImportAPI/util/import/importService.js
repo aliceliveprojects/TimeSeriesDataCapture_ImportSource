@@ -9,7 +9,7 @@ exports.getComponent = async function(componentID){
     }
 }
 
-exports.getComponentIDs = async function(componentIDs){
+exports.postComponentIDs = async function(componentIDs){
     return {
         componentIDs: componentIDs
     }

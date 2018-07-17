@@ -10,7 +10,7 @@ info:
 host: "localhost:8000"
 basePath: "/apis"
 tags:
-- name: "Import Source"
+- name: "ImportAPI"
   description: "Getting components from file storage"
 schemes:
 - "http"
@@ -19,10 +19,10 @@ paths:
   /Components:
     post:
       tags:
-      - "Import Source"
+      - "ImportAPI"
       summary: "Gets IDs available for import"
       description: "Gets all the component IDs available for import"
-      operationId: "getComponentIDs"
+      operationId: "postComponentIDs"
       produces:
       - "application/json"
       parameters:
@@ -50,16 +50,16 @@ paths:
           description: "Bad request"
         401:
           description: "Unauthorized"
-      x-swagger-router-controller: "ImportSource"
+      x-swagger-router-controller: "ImportAPI"
   /Component/{componentID}:
     get:
       tags:
-      - "Import Source"
+      - "ImportAPI"
       summary: "Downloads a specific component"
       description: "Downloads a specific component by component ID"
       operationId: "getComponent"
       produces:
-      - "application/octet-stream"
+      - "application/json"
       parameters:
       - name: "componentID"
         in: "path"
@@ -75,11 +75,11 @@ paths:
           description: "Bad Request"
         401:
           description: "Unauthorized"
-      x-swagger-router-controller: "ImportSource"
+      x-swagger-router-controller: "ImportAPI"
   /Operations:
     get:
       tags:
-      - "Import Source"
+      - "ImportAPI"
       summary: "Gets supported operations"
       description: "Gets currently supported operations"
       operationId: "getOperations"
@@ -97,5 +97,5 @@ paths:
               example: "Compare"
         400:
           description: ""
-      x-swagger-router-controller: "ImportSource"
+      x-swagger-router-controller: "ImportAPI"
 definitions: {}

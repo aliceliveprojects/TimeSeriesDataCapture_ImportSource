@@ -8,8 +8,8 @@ module.exports = {
         return service.getComponent(componentID);
     },
 
-    getComponentIDs: function(componentIDs){
-        return service.getComponentIDs(componentIDs);
+    postComponentIDs: function(componentIDs){
+        return service.postComponentIDs(componentIDs);
     },
 
     getOperations: function(){
