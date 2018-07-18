@@ -9,9 +9,9 @@ exports.getComponent = async function(componentID){
     }
 }
 
-exports.postComponentIDs = async function(componentIDs){
+exports.getComponentIDs = async function(folderID){
     return {
-        componentIDs: componentIDs
+        folderID: folderID
     }
 }
 

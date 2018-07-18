@@ -9,7 +9,7 @@ var importService = require('../util/import/import');
  * componentID String Component ID specifies which component to download 
  * returns File
  **/
-exports.getComponent = function(args,res,next) {
+exports.getComponent2 = function(args,res,next) {
   let componentID = args.componentID.value;
 
   importService.getComponent(componentID)
@@ -29,10 +29,10 @@ exports.getComponent = function(args,res,next) {
  * componentIDs List 
  * returns List
  **/
-exports.getComponentIDs = function(args,res,next) {
-  let folderID = args.folderID.value;
+exports.postComponentIDs = function(args,res,next) {
+  let componentIDs = args.componentIDs.value;
 
-  importService.getComponentIDs(folderID)
+  importService.postComponentIDs(componentIDs)
   .then((result) => {
     httpUtil.endHttpOK(result,res);
   })

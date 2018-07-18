@@ -8,14 +8,11 @@ module.exports = {
         return service.getComponent(componentID);
     },
 
-    postComponentIDs: function(componentIDs){
-        return service.postComponentIDs(componentIDs);
+    getComponentIDs: function(folderID){
+        return service.getComponentIDs(folderID);
     },
 
     getOperations: function(){
         return service.getOperations();
     }
-
-    
-
 }

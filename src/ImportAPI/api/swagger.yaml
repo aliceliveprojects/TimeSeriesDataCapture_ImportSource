@@ -17,25 +17,20 @@ schemes:
 - "https"
 paths:
   /Components:
-    post:
+    get:
       tags:
       - "ImportAPI"
       summary: "Gets IDs available for import"
       description: "Gets all the component IDs available for import"
-      operationId: "postComponentIDs"
+      operationId: "getComponentIDs"
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "componentIDs"
-        required: true
-        schema:
-          type: "array"
-          description: "Array of component objects"
-          items:
-            type: "string"
-            example: "component_id"
-            description: "specific component ID"
+      - name: "folderID"
+        in: "query"
+        description: "Specifies which folder to search"
+        required: false
+        type: "string"
       responses:
         200:
           description: "Success"
