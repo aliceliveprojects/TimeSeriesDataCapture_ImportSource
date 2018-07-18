@@ -12,15 +12,20 @@ exports.httpRequest = function (options) {
             });
 
             res.on('end', function () {
+
+                result = {
+                    statusCode: res.statusCode,
+                    result: result
+                }
+
+                result = JSON.stringify(result);
+              
                 if(res.statusCode == 200 || res.statusCode == 302){
+                    console.log('httpGood');
                     resolve(result);
                 }else{
-                    result = JSON.parse(result)
-                    result.statusCode = res.statusCode;
-         
-                    result = JSON.stringify(result);
-                    reject(result)
-                   
+                    console.log('httpBad')
+                    reject(result); 
                 }
                 
             });

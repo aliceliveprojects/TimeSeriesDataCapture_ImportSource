@@ -6,12 +6,11 @@ var oneDriveService = require('../oneDrive/oneDriveService')
 
 exports.getComponent = async function (componentID) {
 
-    try {
+      try {
         let result = await oneDriveService.getComponent(componentID);
         return (result);
     }catch(error){
-        error = JSON.parse(error);
-        throw (errorApi.createError(error.statusCode,error.error.code));
+        throw(error);
     }
 
 }
@@ -23,9 +22,7 @@ exports.getComponentIDs = async function (folderID) {
         let result = await oneDriveService.getComponentIDs(folderID);
         return (result);
     } catch (error) {
-        error = JSON.parse(error)
-        console.log(error);
-        throw (errorApi.createError(error.statusCode, error.error.code));
+        throw(error);
     }
 
 
