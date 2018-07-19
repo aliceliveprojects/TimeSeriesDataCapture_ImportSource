@@ -2,7 +2,7 @@
 
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
-var oneDriveToken = 'EwBQA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAT9T4V0gqOXvoEAMwHvgdhDTeoynL9q5TCFQr4ud7nb8Q99Bshr33FWjuQvOjiA7kwvpiACiPKqEcXTB1hmZnWHNxYewBFYAPmRXbOA8RtcJnRmRHqbaq7F1OXgSd5oLnBcFDUE6ssFZ+Upiq3THQHweVglCSHhfFKqG2h0OyL9NQ3M2DwsMRxSJb5VpK3LXC4zizb7wCOHqbTscJzD6L/wZ350eqOGrVo/7JnuVonwaGRdOiRx+L71yrdul3sJG9DH/fWHYpQvUMPuhSZ8jd82fHU2ZiYpj5GdEDhDUitIiCLnR1o9yZhKwt1p3ngXp8k2fgXVwgY75PdWOPkR/HU8DZgAACDxqihylvQkjIAJ2UBEmvySMrrf1hrijixCcjNVhuTPQuvQfSRvqp89kj+SuR091klL0E2j81ui9Ex3tZjI/qLxarth6IZqZg7VCoZThO34CUIF7J2nswqZL7kRlh846FrVooa+aHW8e2Ts45nlTJgw8N/3dpDfJScx8oCXmb7g654al4gOWlXFPS60ZQoMvKNdsuS6XXOX4bhQ5HR7qkhYTEmegcsmW9RuqZEKWkTDBm2cZX3Otsx7OSPSYL5/E8dzZHUrBzpivODUIumDYxROrvaj15S8yhS0UH7Drb98TaOSxPvTGEt3qQYGdY43WDt9uSaxcZnPvZ3+p6RCxBdAyWz7QL55lR6L0y0Jiu/eUJ7r8iTFbed2mOj9AYDCIy98S3gktX1Ar2D9iQQHQWs87N+HJ19BCoHxnn6E7/9rgnh4arzT2boRCnHE7mvMXAqwfcM5G7cgkoG5G3AOfwOOxiM3fCP0fVwyLBRABsUyXDVeJSzmDOY/AVSgZ6UAqX5XNTm4/CfOUT5K4av5O2csgnB7ONC5gDx8fdM7FDFQwAPKrc+4VF2WcARrP1bwgV0JTmb2b5yrBTvqgro4r/0TBCy4F3c9NwBXNGmDUtmbpPINeZ8RnyyDGm6WkzE70g3RTzsTXlJeYQ1zAj4DGWyFna7s+ryvrJblJaYLcIi8OPVNGcN6BxH7T3QGajHGLPXr7p5rIrlgTIL9RtFPkYxKfNaZ6SXWmSiPFZgI='
+var oneDriveToken = 'EwBYA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAASROFGYHQhOyLYjzg2foFIRi8j/XUNlPbeKtqNpafmHzfAAfuOtUuEua3kpqC0LrBkrpJgjEYPDNELYXZ+6WtGDNosY56p01JS1WnY9cgzbEU88MQaBElUQaYNCNJ+ZB3WzYQIbCCdeE0YCkmLF2RmOitPkmEcPoBCrdQMH79P1bSYcfiM8kFJ9kRE4x09crKbwe/nuh2L+Bqvck/XNPzES/m7k4xVS89uhrsj8dWK+lOKE++KyZUmBWhMnn9evGIGpiLaIgjO+WIVHWKHBDZ1L7f3VjPYelebp0S4m4+3xPuY6+uZc+EIaNyc2c5JYzDBUIi9r3osi9nI0bj00k0VADZgAACJmgf6xOTYqJKALjyboR89W/ofQ5L2SXBorba1LNdjTpiPLzCqiJWFws59mHnl7bzGcWhlx3a7071V2ivV7LIDcQEaxc2C9UhmR7todI0x+7FA4BI6ha7cg2tupeO/2DkjY4x74hyU5kZD3AIDqeym4ie2ECdV9jSEn7NrD9f45qmMPbKbSogJuXmwsZZ/xH3dhEnUj3PJ7x5JY17FizFzsYDT3Jb5ahovyWx/LGyxmRdH7mIksjS4gwTo4XlepnG2Gl6+PoD9Z/vrQT0L9IOm5Ov1+RPjZ7qypaihRd4mLfB0ARezS7jrQJEDfiiAO8q2fCwZh1hKFN3BfHetNtKBQvPnFNQrKDGFCOJQaX9wVrrb8Um0olwkH7Tp6KbsMNbPKQ5kD5oXfjvNb42i03GzIPGrtM0lQPXVakq3XlAhf0Qkg88kpf9u4nCpFNGkX6iGhmhWF2lXto4UZykoH+1kI7s9jdDyght+7QPMcYPjGQTr9rv/OAoBZHL0nbnzOpPnuhNJHVt2j+m1bJTcn6zG81xbScfBTQKAfKu89ujzqn2IPvVnbRXhyvb6mZOGd03zpVwKVlH4qejay2lDkcVde7NG21L6TfgE2N3iSc180XK8zjw/m4zTXOkUF0qk4bQTM7KbJWAr4xN4/w85q3Gq2DtSM7VhrcElB3Dzo8JnoBZvGzgOjrl22D+LRWgpXusp1iEB+one+/byiHPhYFMHSF2v04XdM3phPoL1aW9fW2hSRmAg=='
 
 function parseComponentIds(data) {
     var result = {
@@ -46,28 +46,16 @@ function parseResponse(result) {
 
 
 
-function errorCreate(error) {
-    var errorCode = 500
-    var errorMessage = 'Internal Error';
 
-    var errorResult = parseResponse(error);
-    console.log(errorResult[1]);
-    if (errorResult != null) {
-        errorResult = JSON.parse(errorResult);
-        errorMessage = errorResult.error.code;
-    }
-
-    return (errorApi.createError(errorCode, errorMessage));
-
-}
 
 exports.getComponentIDs = function (folderID) {
     return new Promise(function (resolve, reject) {
 
-        var path = '/v1.0/me/drive/root/children';
-
+        var select = encodeURI('select=id,name,folder');
+        var path = '/v1.0/me/drive/root/children?' + select;
+        
         if (folderID !== undefined) {
-            path = '/v1.0/me/drive/items/' + encodeURI(folderID) + '/children';
+            path = '/v1.0/me/drive/items/' + encodeURI(folderID) + '/children?' + select;
         }
 
         var options = {
@@ -84,7 +72,6 @@ exports.getComponentIDs = function (folderID) {
         httpRequest.httpRequest(options)
             .then((result) => {
                 var tempResult = parseResponse(result);
-
                 if (tempResult[1] != null) {
                     resolve(parseComponentIds(JSON.parse(tempResult[1])));
                 } else {
@@ -117,10 +104,11 @@ exports.getComponentIDs = function (folderID) {
 exports.getComponent = async function (componentID) {
 
     return new Promise(function (resolve, reject) {
+        var select = encodeURI('select=@microsoft.graph.downloadUrl')
         var options = {
             protocol: 'https:',
             host: 'graph.microsoft.com',
-            path: '/v1.0/me/drive/items/' + encodeURI(componentID),
+            path: '/v1.0/me/drive/items/' + encodeURI(componentID) + '?' +select,
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

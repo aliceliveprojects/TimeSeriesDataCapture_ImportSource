@@ -131,7 +131,7 @@ var initialise = function () {
 
   // initialise main components. We need some of this to change the swagger doc.
   writeAuthClientConfig(getAuthClientConfig());
-  database.initialise(dbUrl, dbNeedsSSL);
+  //database.initialise(dbUrl, dbNeedsSSL);
   auth.initialise(rsaUri, consumerSecret);
   data.initialise(systemId, consumerApiScheme, consumerApiAddress, consumerApiPort);
 

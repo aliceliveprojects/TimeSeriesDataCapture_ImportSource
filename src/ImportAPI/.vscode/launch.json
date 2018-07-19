@@ -14,7 +14,7 @@
                 "DEBUG":"*",
                 "DATABASE_URL":"postgres://YusofBandar@localhost/yusofbandar",
                 "WEB_CONCURRENCY":"4",
-                "PORT": "8000",
+                "PORT": "8001",
                 "DB_NEEDS_SSL":"false",
                 "DISABLE_CLUSTERING" :"true",
                 "RSA_URI":"https://timeseriestest.eu.auth0.com/.well-known/jwks.json",

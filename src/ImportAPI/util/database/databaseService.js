@@ -10,7 +10,6 @@ var dbo;
 
 function connect() {
     return new Promise(function (resolve, reject) {
-
         if (dbo == null) {
             MongoClient.connect(url, { useNewUrlParser: true }, function (error, db) {
                 if (error) reject(error);
@@ -24,6 +23,33 @@ function connect() {
 
     });
 }
+
+function connectTest() {
+
+    MongoClient.connect(url, { useNewUrlParser: true }, (error,db) => {
+        if (error) throw ('error');
+        dbo = db.db("mydb");
+        //console.log('connect success');
+        return('connect success')
+        
+    });
+
+    return('return sucess');
+}
+
+async function test() {
+
+    try {
+        var result = await connectTest();
+        console.log('success',result);
+
+    } catch (error) {
+        console.log('error',error);
+    }
+
+}
+
+test();
 
 /* =======================================================MONGO DB=========================================== */
 

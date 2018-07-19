@@ -31,7 +31,7 @@ exports.getComponent = function(args,res,next) {
  **/
 exports.getComponentIDs = function(args,res,next) {
   let folderID = args.folderID.value;
-
+  
   importService.getComponentIDs(folderID)
   .then((result) => {
     httpUtil.endHttpOK(result,res);
