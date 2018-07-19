@@ -29,6 +29,7 @@
     "jwks-rsa": "^1.2.0",
     "memored": "^1.1.1",
     "minizip-asm.js": "^1.0.10",
+    "mongodb": "^3.1.1",
     "pg": "6.2.3",
     "pg-copy-streams": "^1.2.0",
     "promise": "^8.0.1",

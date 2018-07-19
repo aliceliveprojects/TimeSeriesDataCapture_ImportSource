@@ -2,7 +2,7 @@
 
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
-var oneDriveToken = 'EwBYA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAARWvqK6vQqmChTOmw6P27FXn0otohbDE9rVLzVwYBke/8RqDOwlYcviN/xwc14brBFNCI3qY7eKQqQeAMxEazYSUyaEnYZC11tLQnIUYR0HTWw1Qd4gpm5UDVn7ly2NAMHEYgpTA3kow+WMIjLC7ldQ+zXPD60B73qYZAP8In0y7Y4GRUi3khvQHV+2sfyzw8xat2Z+xW4L4KNQklPSntajHz0Ow8/UQEXR2Ri2dlRFxIS5mfjEIojkOO5arjU2570hN1xx2yefHBNoPgRMNv3+vzFeAKD1aXD/EUNYMOqUBoLNOSN1QPAKyv0rfHuYV6kJ2RojXFL8lKuILBRKOkwsDZgAACOjmkfbWnohiKAJJo2dLUJAsP0LaxV4WJDa5gHnFJCEoMZufuQUCEMUsjhxBo/XgvRIXCEg+IC7tjQs1Q4+mhqMFEWwFNcsrk46p3edDjkoODRYdUD6tBT7mPKsy8poZTrFBCY8ZY4yFXsE6IsBa5lNrmzCIMqduAVwQyBgp1MIMHtekR4Rsnoxf0ZvucYzQShTtgxoHtnUIillQoayXXQgxtUhXKrpIwGemSZwvCxD6jwp0fOvD1ZJ6AMXs3s1Ks/kVbuaamQPswdfi2zrRqeBPVoq6SP0Aq3qwwlD4HFpNwZg8ySQmw96Z0U4K2P5j5Qa5FK7Fz9q7pG79zcKlZHjGg97B73/7pFyQ4thWJfSOo3QPleTjufXnw83MG4T5HGF6B2FeOkzpWv6zMtcx/u6QuBiJwnro+LU3IhZnkSO4bRkXbp3sBWFnQmD8dl1Fmyfapd56GQ4zWMPYx1JRJK8DXj4CB/zFmH4Un2UCzIG1Z/EpdYHGC8NCQ6jgASR5krnkzPXfyVp/O9NvxoLE4QpnKhRxJ7HmMtDoGqGdQuV6lKSEo+1kjtdx+5AWPTEkKoN4lmb0kc3FQR7Rqz/ebGAHLAiCjQXLsjN3hRSWOGWS5sXOEusUYh3NsCGK+4EvEwWTS6K1bTegyOuP1wOgI/wtME7c5sxC2GenS+sELUHrLA4Y3ReNl0qmle4mAwb9EPfLXv6KbqX/4BsdI/JVUl9EkPqwqq0pIubM2Jg53t1C7NJmAg=='
+var oneDriveToken = 'EwBQA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAT9T4V0gqOXvoEAMwHvgdhDTeoynL9q5TCFQr4ud7nb8Q99Bshr33FWjuQvOjiA7kwvpiACiPKqEcXTB1hmZnWHNxYewBFYAPmRXbOA8RtcJnRmRHqbaq7F1OXgSd5oLnBcFDUE6ssFZ+Upiq3THQHweVglCSHhfFKqG2h0OyL9NQ3M2DwsMRxSJb5VpK3LXC4zizb7wCOHqbTscJzD6L/wZ350eqOGrVo/7JnuVonwaGRdOiRx+L71yrdul3sJG9DH/fWHYpQvUMPuhSZ8jd82fHU2ZiYpj5GdEDhDUitIiCLnR1o9yZhKwt1p3ngXp8k2fgXVwgY75PdWOPkR/HU8DZgAACDxqihylvQkjIAJ2UBEmvySMrrf1hrijixCcjNVhuTPQuvQfSRvqp89kj+SuR091klL0E2j81ui9Ex3tZjI/qLxarth6IZqZg7VCoZThO34CUIF7J2nswqZL7kRlh846FrVooa+aHW8e2Ts45nlTJgw8N/3dpDfJScx8oCXmb7g654al4gOWlXFPS60ZQoMvKNdsuS6XXOX4bhQ5HR7qkhYTEmegcsmW9RuqZEKWkTDBm2cZX3Otsx7OSPSYL5/E8dzZHUrBzpivODUIumDYxROrvaj15S8yhS0UH7Drb98TaOSxPvTGEt3qQYGdY43WDt9uSaxcZnPvZ3+p6RCxBdAyWz7QL55lR6L0y0Jiu/eUJ7r8iTFbed2mOj9AYDCIy98S3gktX1Ar2D9iQQHQWs87N+HJ19BCoHxnn6E7/9rgnh4arzT2boRCnHE7mvMXAqwfcM5G7cgkoG5G3AOfwOOxiM3fCP0fVwyLBRABsUyXDVeJSzmDOY/AVSgZ6UAqX5XNTm4/CfOUT5K4av5O2csgnB7ONC5gDx8fdM7FDFQwAPKrc+4VF2WcARrP1bwgV0JTmb2b5yrBTvqgro4r/0TBCy4F3c9NwBXNGmDUtmbpPINeZ8RnyyDGm6WkzE70g3RTzsTXlJeYQ1zAj4DGWyFna7s+ryvrJblJaYLcIi8OPVNGcN6BxH7T3QGajHGLPXr7p5rIrlgTIL9RtFPkYxKfNaZ6SXWmSiPFZgI='
 
 function parseComponentIds(data) {
     var result = {
@@ -23,26 +23,41 @@ function parseComponentIds(data) {
     return result;
 }
 
-function parseResult(result) {
+function parseResponse(result) {
     result = JSON.parse(result);
+
+
+
+    var response = null;
+    var responseCode = null;
+
     if (result.hasOwnProperty('result')) {
-        return (result.result);
-    } else {
-        return null;
+        response = result.result;
     }
+
+    if (result.hasOwnProperty('statusCode')) {
+        responseCode = result.statusCode;
+    }
+
+
+    return [responseCode, response];
 
 }
 
-function errorCreate(error){
+
+
+function errorCreate(error) {
     var errorCode = 500
     var errorMessage = 'Internal Error';
 
-    var errorResult = parseResult(error);
-    if(errorResult != null){
-        
+    var errorResult = parseResponse(error);
+    console.log(errorResult[1]);
+    if (errorResult != null) {
+        errorResult = JSON.parse(errorResult);
+        errorMessage = errorResult.error.code;
     }
 
-    return(errorApi.createError(400,errorMessage));
+    return (errorApi.createError(errorCode, errorMessage));
 
 }
 
@@ -68,18 +83,31 @@ exports.getComponentIDs = function (folderID) {
 
         httpRequest.httpRequest(options)
             .then((result) => {
-                var tempResult = parseResult(result);
+                var tempResult = parseResponse(result);
 
-                if (tempResult != null) {
-                    resolve(parseComponentIds(JSON.parse(tempResult)));
+                if (tempResult[1] != null) {
+                    resolve(parseComponentIds(JSON.parse(tempResult[1])));
                 } else {
                     resolve(result);
                 }
 
             })
             .catch((error) => {
-                reject(errorCreate(error));
-               
+                error = parseResponse(error);
+                var errorResponse = 'Error';
+                var errorCode = 500;
+
+                if (error[0] != null)
+                    errorCode = error[0]
+
+                if (error[1] != null) {
+                    errorResponse = JSON.parse(error[1]);
+                    errorResponse = errorResponse.error.code;
+                }
+
+
+                reject(errorApi.createError(errorCode, errorResponse));
+
             })
     });
 
@@ -105,12 +133,13 @@ exports.getComponent = async function (componentID) {
                 return result
             })
             .then((result) => {
-                var tempResult = parseResult(result);
-
-                if(tempResult == null){
+                var tempResult = parseResponse(result);
+                console.log(tempResult[1]);
+                if (tempResult[1] == null) {
                     reject(errorApi.create500Error('Internal Server Error'))
                 }
-                
+
+                tempResult = JSON.parse(tempResult[1]);
                 var url = new URL(tempResult['@microsoft.graph.downloadUrl']);
                 var options = {
                     protocol: 'https:',
@@ -125,23 +154,48 @@ exports.getComponent = async function (componentID) {
 
                 httpRequest.httpRequest(options)
                     .then((result) => {
-                        var tempResult = parseResult(result);
-                        console.log(tempResult);
-                        if (tempResult != null) {
-                            resolve(tempResult);
+                        var tempResult = parseResponse(result);
+
+                        if (tempResult[1] != null) {
+                            resolve(tempResult[1]);
                         } else {
                             resolve(result);
                         }
                     })
                     .catch((error) => {
-                        console.log(error);
-                        reject(errorApi.create400Error('Error'));
+                        error = parseResponse(error);
+                        var errorResponse = 'Error';
+                        var errorCode = 500;
+
+                        if (error[0] != null)
+                            errorCode = error[0]
+
+                        if (error[1] != null) {
+                            errorResponse = JSON.parse(error[1]);
+                            errorResponse = errorResponse.error.code;
+                        }
+
+
+                        reject(errorApi.createError(errorCode, errorResponse));
                     })
 
 
             })
             .catch((error) => {
-                reject(errorApi.create400Error('Error'));
+                error = parseResponse(error);
+                var errorResponse = 'Error';
+                var errorCode = 500;
+
+                if (error[0] != null)
+                    errorCode = error[0]
+
+                if (error[1] != null) {
+                    errorResponse = JSON.parse(error[1]);
+                    errorResponse = errorResponse.error.code;
+                }
+
+
+                reject(errorApi.createError(errorCode, errorResponse));
             })
 
     });
