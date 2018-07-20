@@ -2,7 +2,7 @@
 
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
-var oneDriveToken = 'EwBYA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAASROFGYHQhOyLYjzg2foFIRi8j/XUNlPbeKtqNpafmHzfAAfuOtUuEua3kpqC0LrBkrpJgjEYPDNELYXZ+6WtGDNosY56p01JS1WnY9cgzbEU88MQaBElUQaYNCNJ+ZB3WzYQIbCCdeE0YCkmLF2RmOitPkmEcPoBCrdQMH79P1bSYcfiM8kFJ9kRE4x09crKbwe/nuh2L+Bqvck/XNPzES/m7k4xVS89uhrsj8dWK+lOKE++KyZUmBWhMnn9evGIGpiLaIgjO+WIVHWKHBDZ1L7f3VjPYelebp0S4m4+3xPuY6+uZc+EIaNyc2c5JYzDBUIi9r3osi9nI0bj00k0VADZgAACJmgf6xOTYqJKALjyboR89W/ofQ5L2SXBorba1LNdjTpiPLzCqiJWFws59mHnl7bzGcWhlx3a7071V2ivV7LIDcQEaxc2C9UhmR7todI0x+7FA4BI6ha7cg2tupeO/2DkjY4x74hyU5kZD3AIDqeym4ie2ECdV9jSEn7NrD9f45qmMPbKbSogJuXmwsZZ/xH3dhEnUj3PJ7x5JY17FizFzsYDT3Jb5ahovyWx/LGyxmRdH7mIksjS4gwTo4XlepnG2Gl6+PoD9Z/vrQT0L9IOm5Ov1+RPjZ7qypaihRd4mLfB0ARezS7jrQJEDfiiAO8q2fCwZh1hKFN3BfHetNtKBQvPnFNQrKDGFCOJQaX9wVrrb8Um0olwkH7Tp6KbsMNbPKQ5kD5oXfjvNb42i03GzIPGrtM0lQPXVakq3XlAhf0Qkg88kpf9u4nCpFNGkX6iGhmhWF2lXto4UZykoH+1kI7s9jdDyght+7QPMcYPjGQTr9rv/OAoBZHL0nbnzOpPnuhNJHVt2j+m1bJTcn6zG81xbScfBTQKAfKu89ujzqn2IPvVnbRXhyvb6mZOGd03zpVwKVlH4qejay2lDkcVde7NG21L6TfgE2N3iSc180XK8zjw/m4zTXOkUF0qk4bQTM7KbJWAr4xN4/w85q3Gq2DtSM7VhrcElB3Dzo8JnoBZvGzgOjrl22D+LRWgpXusp1iEB+one+/byiHPhYFMHSF2v04XdM3phPoL1aW9fW2hSRmAg=='
+var oneDriveToken = 'EwBQA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAWxIZ4cb0dmHQKPZM2xbtDUEcbu//rHHqRWT3gas1z3roM+82E5lbRnABBrk9m1NriIb7EavKrGrWc0IOMC+B08dhbEcWDNaIJ8rn1WzPKU6pI0noTbYAWWbIdGhmRKlVVtok+2gE9CtLyHS+oC4yZkw5oBBxswJOrEXoxuFzNvD7Ar1ZdCSp2H/ebsbsWLquNdZiBBeIGZ+gsVE+knSBMXpVfd6L7h8zhXJo92WuacptvR/E3CK57NUB8jagHM+mx1xREq2JkhT04fN+dnNdsJNwVjtNnzJCtdygIlYr4xA+6oniCgm/T0lNSxw7HcCht4EAYa14rIkPJ14x19UwJQDZgAACNCLE3XRIsvMIAKjDysV1vNg2GGv9q9potZ/k6dOl/CiEOQrWIlG2UWsY+56YbmuK0V76m71Ok8tsixTxF875k9gpvaQYLN9lgIyK/GkqRtxBeumFa8obmJ+LtNnAnWbXK6jCotYtcFfXGrgcVojiSB09j1HD091oMVdSfgcqKTxtJ3eO4wocxambJkRBBFsNJ70vFIyrCDUeTXkT3YH16iow9t5wZesQ3QINMsbEORPnA4t9bj9Rs+tpoHv7wxuV9Yp7h/uvLUSGADYA9w4OFhwW9R11CmkUefp5eDnskB+TQ2eWIkSb5EwCnDnqNzeYR9ugtSbNTGYQAvLnUIg8cmElPFde6CRZVmPx8ekbTQU4CwylPUrA64jvE4HmVMqMbYX/UZB1NMtD2PZiwEvvUZ4MdO2K4helckFe0YcYOihhd54ouuVsBEYfea1J2rxHCAxLZh+lxbfDqeqkYA4HkeyFfP61U0nO/ffACf7NSy83CGNU3o5tElK2/ScmgCfF0c3UZ8MplIXqmxjWWGlN/2gk9TJfqfAG9lKcHClIe4j6XIopx9OPgYue4S/fxATGlh8ZzM9cR/cIudkogj7UmcBqYaUYYUh23awf/1aFAMAE0AsnhGO/ZsZnwymYnwo/OnR/TqMMX/9SSHXJBYx4CTwjOQCE3tT6uR44YR3oTiq4DTZ9dE9hNpsKdpWs7kNtpxtMcZsU/9XD1qrW0fd/FgfYzovsQ+77SaBZgI='
 
 function parseComponentIds(data) {
     var result = {
@@ -73,7 +73,7 @@ exports.getComponentIDs = function (folderID) {
             .then((result) => {
                 var tempResult = parseResponse(result);
                 if (tempResult[1] != null) {
-                    resolve(parseComponentIds(JSON.parse(tempResult[1])));
+                    resolve((JSON.parse(tempResult[1])));
                 } else {
                     resolve(result);
                 }
@@ -104,12 +104,11 @@ exports.getComponentIDs = function (folderID) {
 exports.getComponent = async function (componentID) {
 
     return new Promise(function (resolve, reject) {
-        var select = encodeURI('select=@microsoft.graph.downloadUrl')
+      
         var options = {
             protocol: 'https:',
             host: 'graph.microsoft.com',
-            path: '/v1.0/me/drive/items/' + encodeURI(componentID) + '?' +select,
-            method: 'GET',
+            path: '/v1.0/me/drive/items/' + encodeURI(componentID),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'bearer ' + oneDriveToken
@@ -118,6 +117,7 @@ exports.getComponent = async function (componentID) {
 
         httpRequest.httpRequest(options)
             .then((result) => {
+                console.log(result);
                 return result
             })
             .then((result) => {
@@ -182,7 +182,7 @@ exports.getComponent = async function (componentID) {
                     errorResponse = errorResponse.error.code;
                 }
 
-
+                console.log(error);
                 reject(errorApi.createError(errorCode, errorResponse));
             })
 
