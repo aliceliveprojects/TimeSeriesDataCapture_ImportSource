@@ -2,7 +2,7 @@
 
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
-var oneDriveToken = 'EwBYA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAYNwcOwWf6wH75zRGNr87ScVZnI5anY4KKVECJNv1THOrOZxekqv5XAyWivwig9kO7zTKVNP5gN5fih3G9YNWD5s3VF0Odp+KGxfzIH3OZNhVYo6efElmP4a1C6Y8mx5N4KmNTsSWEDkhrTy3nk3Lq347mmxOvyyJ0Ldx1x62Mi1V4ESCQyg8TpLvP//cJfggaoRBDy2GS9JDERC6h1s4feUPt5AnX440v9sjEtuyC6sHuMNeoLWifqAn0YsvMbe3Wf0MFjqgDTG7a/QKEK8bS+QRUeayWVi2O/PTqMOod9vt3axLTLKGiWK7GGCSB5qKJWQtdoA7lTedEQB2asLNwMDZgAACHtLQwDk3mcTKAK33KOEK7l+pvdJd03Szlf6YbUIt2WEmB+pMDQ1uDhzgOkM8LN3A4JpbaaJeNXEgRBIpvqGpYrXRIZxNvHM+PIUSOiwp+/moMmVNXa1hfnFK5H6noCKCDZgtMvUOsjJLJSfNfr/zE013QhnqPwrJV+sIqLPU+h+w6aY+CHzT8+FkLvoCYzEqpSGTMNMYDmbslfsmFxvzUgakykMfeFg+5Cpc1wuu/auTZ6GTt915QrO/vCn/nYRj/dlQcDAYB6gY7+Nl6kOetU0hrHBDcaas3FANRmLsleuDB21vIA4gxazAQY4m+y5JfkLFd31X345PSZiHfuxbXw3QS+lf5y9ya9X7J6NaiC51e8lr0obUrUC8LnHcl7QiEu5xl9x6kR7nlS6G0Eay3tpLxy4CV6bo2Wns3YZc2kS0HlnLM6tcX3dbsbr1j3vwwk2yTlp6Ew6uEq6iJe3dNDmbP56lpT+agMPV/zmh7GCyU1bBzpXnNMlm9DA4hhkD976rv5VEB1cm2zIdTyuV2ltnMknr8fnegWinhSzPdhsbq6mh6ilyYMb0s9H26U0AxPMhlxal8haFN0buKaVQngGKE6X0LqmHUi9LEc2jOiuDz0T4F6+QBXq5+NyGxNdIstv9XrElvHKzvjkI9bTAnleReMWl0f1afTQ4TcIWYjPFQthzuLD9iaKib4l60F+rQ8Fy6BJ929evAdOhNWoEvU2rXmKoIIV5xQd9ng2njgR2F1mAg=='
+var oneDriveToken = 'EwBQA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAATmDYkHWxruoQyV0pkXKV5JRCpbqEFJKv8QzB+aR0dELRFt0meuUXApslEgg5xQoHdGYC9MPCqcfIlfimDgDUEmh8jvsk9gE8K/B/2ymauzk61zQGw84Er6/rlJ0ZLrcHbR4xPOYV6fK16Np1UP7NEUnEIUjUEMr8njo7Sn9hFKzxbk8wUy0mT1k0ESaDDDeONIRx24K/JxIRQkQkje1CkVcor8DZDJJFd69k6afQDFBu+U+Z6QCjV1FMuBjk+MocdnX3Dj7KGfNnnasXer719bP1uWWpZRCrdFzpMo9krXfVaDvpFUmhS0nU43Ltp2uSci1XB2XpSmjLhyugO7v2hQDZgAACNRPXFAQTF2FIAKurIiQuKJbAHCtaVnQRqTP0S813jPc6+9Ko17QMmNtA8OcgixUc6Xgsbzdv73Z9QA7PBnNGkax3XShO/S9EkCUEr0b+Dy9Os8A23xRu0Ct4K7Y/Fvkx2ioDqvjGe5I4fg/CqUfdq2JpgMLX1XXeS98Clpra01EpUBoO1+lhNz4u+xv1nGdqjo2N4x/LBlSBqM9WmMxHvZkTJwxvRtduY5vKPoMy4GCieV1X7XYlVDypM5QYzSVhmDwQSwINH9rLWb6l/CU2Qqk03Rvye3eh7fx4Hs5+1+5lhfooxV2+Kzx9YNYfuJEH6qDeOEXLWsfwK4Lee/Z+WNQFOiI23GqvR08OrW0/J6+TUYW+24hxmAsDhg5lOdMkonMKm7l3pkWGlM1ukghu/CPpJ8EXGA3H4BKing2SS3Yx7wBGZtEifIp8i3suSqiq9TqkzEU3V/ha9YZ6akxFTtZzyGYbkBh0H/L8mdZdWYbj+Tc7R05ieMfCfFqKI+v4elskgJ2Dtp+eSRPogzOqremo9OspOEvFYy1+iGq5Di8K404wjYwAlSlKiHf9QzwBD4jPT3hQ0vxt0dB9QfNN/ui6gngeWzQqAfNEv5ev39t4ZpCMKDGoAkKQ6IwFwpCDaIOM+nd1FZm+B3VcwkZIVSO0+4xU2mHkN580gvLGLjAJJ387q74a+AoDTzAWqRKPp6mtHKs9IdaqDFspFoi9uy36LdvtpizQcUXZgI='
 function parseComponentIds(data) {
     var result = {
         folders: []
@@ -25,8 +25,6 @@ function parseComponentIds(data) {
 function parseResponse(result) {
     result = JSON.parse(result);
 
-
-
     var response = null;
     var responseCode = null;
 
@@ -38,29 +36,93 @@ function parseResponse(result) {
         responseCode = result.statusCode;
     }
 
-
     return [responseCode, response];
+}
+
+
+function parseError(error) {
+    var errorResponse = 'Error';
+    var errorCode = 500;
+
+    if (error != null)
+        errorCode = error[0]
+
+    if (error[1] != null) {
+        try {
+            errorResponse = JSON.parse(error[1]);
+            errorResponse = errorResponse.error.code;
+        } catch (error) {
+            errorResponse = error[1];
+        }
+       
+    }
+
+    return (errorApi.createError(errorCode,errorResponse));
 
 }
 
 
+exports.getComponentIDs = async function (folderID) {
+    var select = encodeURI('select=id,name,folder');
+    var path = '/v1.0/me/drive/root/children?' + select;
 
+    if (folderID !== undefined) {
+        path = '/v1.0/me/drive/items/' + encodeURI(folderID) + '/children?' + select;
+    }
 
-
-exports.getComponentIDs = function (folderID) {
-    return new Promise(function (resolve, reject) {
-
-        var select = encodeURI('select=id,name,folder');
-        var path = '/v1.0/me/drive/root/children?' + select;
-        
-        if (folderID !== undefined) {
-            path = '/v1.0/me/drive/items/' + encodeURI(folderID) + '/children?' + select;
+    var options = {
+        protocol: 'https:',
+        host: 'graph.microsoft.com',
+        path: path,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + oneDriveToken
         }
+    };
+
+    try {
+        var response = await httpRequest.httpRequest(options);
+        var result = parseResponse(response);
+        if (result[1] != null) {
+            return (parseComponentIds(JSON.parse(result[1])));
+        } else {
+            return (response);
+        }
+    } catch (error) {
+        console.log(error);
+        error = parseResponse(error);
+        throw (parseError(error));
+    }
+}
+
+
+//example 2B497C4DAFF48A9C!105
+exports.downloadComponent = async function (componentID) {
+    var options = {
+        protocol: 'https:',
+        host: 'graph.microsoft.com',
+        path: '/v1.0/me/drive/items/' + encodeURI(componentID),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + oneDriveToken
+        }
+    };
+
+    try {
+        var response = await httpRequest.httpRequest(options);
+        response = parseResponse(response);
+        if (response[1] == null) {
+            throw (errorApi.create500Error('Internal Server Error'));
+        }
+
+        response = JSON.parse(response[1]);
+        var url = new URL(response['@microsoft.graph.downloadUrl']);
 
         var options = {
             protocol: 'https:',
-            host: 'graph.microsoft.com',
-            path: path,
+            host: url.hostname,
+            path: url.pathname,
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,123 +130,50 @@ exports.getComponentIDs = function (folderID) {
             }
         };
 
-        httpRequest.httpRequest(options)
-            .then((result) => {
-                var tempResult = parseResponse(result);
-                if (tempResult[1] != null) {
-                    resolve((JSON.parse(tempResult[1])));
-                } else {
-                    resolve(result);
-                }
+        response = await httpRequest.httpRequest(options);
+        var result = parseResponse(response);
 
-            })
-            .catch((error) => {
-                error = parseResponse(error);
-                var errorResponse = 'Error';
-                var errorCode = 500;
-
-                if (error[0] != null)
-                    errorCode = error[0]
-
-                if (error[1] != null) {
-                    errorResponse = JSON.parse(error[1]);
-                    errorResponse = errorResponse.error.code;
-                }
-
-
-                reject(errorApi.createError(errorCode, errorResponse));
-
-            })
-    });
-
+        if (result[1] != null) {
+            throw (result[1]);
+        } else {
+            response(result);
+        }
+    } catch (error) {
+        error = parseResponse(error);
+        throw (parseError(error));
+    }
 }
 
-//example 2B497C4DAFF48A9C!105
+
+
+
 exports.getComponent = async function (componentID) {
+    var select = encodeURI('select=id,name,folder');
+    var options = {
+        protocol: 'https:',
+        host: 'graph.microsoft.com',
+        path: '/v1.0/me/drive/items/' + encodeURI(componentID) + '?expand=children(select=id,name)' +'&'+select,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + oneDriveToken
+        }
+    };
 
-    return new Promise(function (resolve, reject) {
-      
-        var options = {
-            protocol: 'https:',
-            host: 'graph.microsoft.com',
-            path: '/v1.0/me/drive/items/' + encodeURI(componentID),
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'bearer ' + oneDriveToken
-            }
-        };
+    try {
+        var response = await httpRequest.httpRequest(options);
+        var result = parseResponse(response);
+        if (result[1] != null) {
+            return (JSON.parse(result[1]));
+        } else {
+            return (response);
+        }
+    } catch (error) {
+        console.log(error);
+        error = parseResponse(error);
+        throw (parseError(error));
 
-        httpRequest.httpRequest(options)
-            .then((result) => {
-                
-                return result
-            })
-            .then((result) => {
-                var tempResult = parseResponse(result);
- 
-                if (tempResult[1] == null) {
-                    reject(errorApi.create500Error('Internal Server Error'))
-                }
-
-                tempResult = JSON.parse(tempResult[1]);
-                var url = new URL(tempResult['@microsoft.graph.downloadUrl']);
-                var options = {
-                    protocol: 'https:',
-                    host: url.hostname,
-                    path: url.pathname,
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'bearer ' + oneDriveToken
-                    }
-                };
-
-                httpRequest.httpRequest(options)
-                    .then((result) => {
-                        var tempResult = parseResponse(result);
-
-                        if (tempResult[1] != null) {
-                            resolve(tempResult[1]);
-                        } else {
-                            resolve(result);
-                        }
-                    })
-                    .catch((error) => {
-                        error = parseResponse(error);
-                        var errorResponse = 'Error';
-                        var errorCode = 500;
-
-                        if (error[0] != null)
-                            errorCode = error[0]
-
-                        if (error[1] != null) {
-                            errorResponse = JSON.parse(error[1]);
-                            errorResponse = errorResponse.error.code;
-                        }
-
-
-                        reject(errorApi.createError(errorCode, errorResponse));
-                    })
-
-
-            })
-            .catch((error) => {
-                error = parseResponse(error);
-                var errorResponse = 'Error';
-                var errorCode = 500;
-
-                if (error[0] != null)
-                    errorCode = error[0]
-
-                if (error[1] != null) {
-                    errorResponse = JSON.parse(error[1]);
-                    errorResponse = errorResponse.error.code;
-                }
-
-                console.log(error);
-                reject(errorApi.createError(errorCode, errorResponse));
-            })
-
-    });
-
+    }
 }
+
+
+

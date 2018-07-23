@@ -9,7 +9,7 @@ const Stopwatch = require("node-stopwatch").Stopwatch;
 
 exports.getComponent = async function (componentID) {
 
-    var stopwatch = Stopwatch.create();
+    /* var stopwatch = Stopwatch.create();
 
     var options = {
         noheader: true,
@@ -18,16 +18,34 @@ exports.getComponent = async function (componentID) {
     }
     try {
         let result = await oneDriveService.getComponent(componentID);
-        var csvArray = await csv(options).fromString(result)
-        stopwatch.start();
+        let csvArray = await csv(options).fromString(result)
         result = await parseArray({},csvArray);
-        console.log(result)
-        stopwatch.stop();
-        console.log(stopwatch.elapsedMilliseconds);
+        
         return (result);
     } catch (error) {
         console.log(error);
         throw (error);
+    } */
+
+    try {
+        let result = await oneDriveService.getComponent(componentID);
+       
+        var componentsChildren = 'children' in result ? componentsChildren = result['children'] : componentsChildren=[];
+        var componentsChildrenLength = componentsChildren.length;
+        if(componentsChildrenLength > 0){
+            for(var i=0,n=componentsChildrenLength;i<n;i++){
+                if(componentsChildren[i].name === 'T-Data'){
+                    console.log("T_data found");
+                }
+            }
+        }else{
+            throw(errorApi.create500Error('folder does not contain any children'));
+        }
+        
+        console.log(test);
+        return(result)
+    } catch (error) {
+        throw(error);
     }
 
 }
@@ -39,19 +57,20 @@ exports.getComponentIDs = async function (folderID) {
         let result = await oneDriveService.getComponentIDs(folderID);
         return (result);
     } catch (error) {
+        console.log(error);
         throw (error);
     }
-
-
-
-
 }
 
 exports.getOperations = async function () {
 
 }
 
-function parseArray(options,array){
+function downloadComponent(componentID){
+
+}
+
+function parseRunArray(options,array){
     console.log(array[0]);
     var object = {
     }

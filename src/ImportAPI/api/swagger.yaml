@@ -16,7 +16,7 @@ schemes:
 - "http"
 - "https"
 paths:
-  /Components:
+  /components:
     get:
       tags:
       - "ImportAPI"
@@ -46,12 +46,12 @@ paths:
         401:
           description: "Unauthorized"
       x-swagger-router-controller: "ImportAPI"
-  /Component/{componentID}:
+  /component/{componentID}:
     get:
       tags:
       - "ImportAPI"
-      summary: "Downloads a specific component"
-      description: "Downloads a specific component by component ID"
+      summary: "Gets a specific component"
+      description: "gets a specific component by component ID"
       operationId: "getComponent"
       produces:
       - "application/json"
@@ -71,7 +71,7 @@ paths:
         401:
           description: "Unauthorized"
       x-swagger-router-controller: "ImportAPI"
-  /Operations:
+  /operations:
     get:
       tags:
       - "ImportAPI"

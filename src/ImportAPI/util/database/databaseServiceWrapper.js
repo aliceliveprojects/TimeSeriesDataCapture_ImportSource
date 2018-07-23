@@ -104,7 +104,7 @@ exports.addTag = async function addTag(tag) {
 
 /* =======================================================ALGORITHM QUERIES=========================================== */
 
-exports.insertAlgorithm = function insertAlgorithm(algorithm) {
+exports.insertAlgorithm = async function insertAlgorithm(algorithm) {
     try {
         return (await service.mongodbInsert('algorithmsCollection',algorithm));
     } catch (error) {
@@ -112,7 +112,7 @@ exports.insertAlgorithm = function insertAlgorithm(algorithm) {
     }
 }
 
-exports.getAllAlgorithms = function getAllAlgorithms(){
+exports.getAllAlgorithms = async function getAllAlgorithms(){
     try{
         return (await service.mongodbFindAll('algorithmsCollection'));
     }catch(error){
@@ -120,7 +120,7 @@ exports.getAllAlgorithms = function getAllAlgorithms(){
     }
 }
 
-exports.getAlgorithm = function getAlgorithm(id) {
+exports.getAlgorithm = async function getAlgorithm(id) {
     var query = {
         _id : id
     }
@@ -130,7 +130,5 @@ exports.getAlgorithm = function getAlgorithm(id) {
         throw(error);
     }
 }
-
-
 
 /* ========================================================================================================= */
