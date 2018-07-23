@@ -3,6 +3,9 @@
 var utils = require('../util/writer.js');
 var ImportAPI = require('./ImportAPIService');
 
+
+
+
 module.exports.getComponent = function getComponent (req, res, next) {
   ImportAPI.getComponent(req.swagger.params,res,next);
 };

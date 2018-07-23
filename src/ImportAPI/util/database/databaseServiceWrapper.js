@@ -8,7 +8,7 @@ var runobject = {
     age: 33
 }
 
-/* =======================================================RUN QUERIES=========================================== */
+/* =======================================================RUN QUERIES================================================ */
 exports.insertRun = async function insertRun(run) {
     try {
         return (await service.mongodbInsert('runs', run));
@@ -18,8 +18,11 @@ exports.insertRun = async function insertRun(run) {
 }
 
 exports.updateRuns = async function updateRuns(query, updatedRun) {
+    var updatedRunObject = {
+        $set : updatedRun
+    }
     try {
-        return (awaitservice.mongodbUpdate('runs', query, updatedRun));
+        return (awaitservice.mongodbUpdate('runs', query, updatedRunObject));
     } catch (error) {
         throw (error);
     }
@@ -33,7 +36,7 @@ exports.deleteRun = async function deleteRun(run) {
     }
 }
 
-exports.queryRun = async function queryRun(query) {
+exports.queryRun = async function queryRun(query, filter) {
     try {
         return (await service.mongodbQuery('runs', query));
     } catch (error) {
@@ -42,43 +45,92 @@ exports.queryRun = async function queryRun(query) {
 }
 /* =================================================================================================================== */
 
+/* ====================================================AUTHENTICATE QUERIES=========================================== */
+exports.getAuthentication = async function getAuthentication(profileID, filter) {
+    var query = { profileID: profileID };
+    try {
+        return (await service.mongodbQuery('authenticationCollection', query, filter))
+    } catch (error) {
+        throw (error);
+    }
+}
+
+exports.setAuthentication = async function setAuthentication(authentication) {
+    var authenticationObject = {
+        $set: authentication
+    }
+    try {
+        return (await service.mongodbUpdate('authenticationCollection', authentication[profileID], authenticationObject));
+    } catch (error) {
+
+    }
+}
+/* =================================================================================================================== */
+
+/* ====================================================TAG QUERIES==================================================== */
+exports.getTag = async function getTag(tag, filter) {
+    var query = {
+    };
+
+    if (typeof tag == 'number') {
+        query['_id'] = tag;
+    } else {
+        query['text'] = {
+            $regex: '^' + tag,
+            $options: 'i'
+        }
+    }
+
+    try {
+        return (await service.mongodbQuery('tagsCollection', query, filter));
+    } catch (error) {
+        throw (error);
+    }
+}
+
+exports.addTag = async function addTag(tag) {
+    try {
+        if (getTag(tag) > 0) {
+            var tagObject = {
+                text: tag
+            }
+            return (await service.mongodbInsert('tagsCollection', tagObject))
+        }
+    } catch (error) {
+        throw (error);
+    }
+}
+
+
 /* =======================================================ALGORITHM QUERIES=========================================== */
 
 exports.insertAlgorithm = function insertAlgorithm(algorithm) {
-    return new Promise(function (resolve, reject) {
-        service.mongodbInsert('algorithms', algorithm)
-            .then((result) => {
-                resolve(result);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
+    try {
+        return (await service.mongodbInsert('algorithmsCollection',algorithm));
+    } catch (error) {
+        throw(error);
+    }
+}
 
+exports.getAllAlgorithms = function getAllAlgorithms(){
+    try{
+        return (await service.mongodbFindAll('algorithmsCollection'));
+    }catch(error){
+        throw(error);
+    }
+}
+
+exports.getAlgorithm = function getAlgorithm(id) {
+    var query = {
+        _id : id
+    }
+    try {
+        return (await service.mongodbQuery('algorithmsCollection',query));
+    } catch (error) {
+        throw(error);
+    }
 }
 
 
-exports.deleteAlgorithm = function deleteAlgorithm(algorithm) {
-    return new Promise(function (resolve, reject) {
-        service.mongodbDelete('algorithms', algorithm)
-            .then(function (result) {
-                resolve(result);
-            }).catch(function (error) {
-                reject(error);
-            })
-    });
-}
-
-exports.queryAlgorithm = function queryAlgorithm(query) {
-    return new Promise(function (resolve, reject) {
-        service.mongodbQuery('algorithms', query)
-            .then((result) => {
-                resolve(result);
-            })
-            .catch((error) => {
-                reject(error);
-            })
-    })
-}
 
 /* ========================================================================================================= */

@@ -2,8 +2,7 @@
 
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
-var oneDriveToken = 'EwBQA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAWxIZ4cb0dmHQKPZM2xbtDUEcbu//rHHqRWT3gas1z3roM+82E5lbRnABBrk9m1NriIb7EavKrGrWc0IOMC+B08dhbEcWDNaIJ8rn1WzPKU6pI0noTbYAWWbIdGhmRKlVVtok+2gE9CtLyHS+oC4yZkw5oBBxswJOrEXoxuFzNvD7Ar1ZdCSp2H/ebsbsWLquNdZiBBeIGZ+gsVE+knSBMXpVfd6L7h8zhXJo92WuacptvR/E3CK57NUB8jagHM+mx1xREq2JkhT04fN+dnNdsJNwVjtNnzJCtdygIlYr4xA+6oniCgm/T0lNSxw7HcCht4EAYa14rIkPJ14x19UwJQDZgAACNCLE3XRIsvMIAKjDysV1vNg2GGv9q9potZ/k6dOl/CiEOQrWIlG2UWsY+56YbmuK0V76m71Ok8tsixTxF875k9gpvaQYLN9lgIyK/GkqRtxBeumFa8obmJ+LtNnAnWbXK6jCotYtcFfXGrgcVojiSB09j1HD091oMVdSfgcqKTxtJ3eO4wocxambJkRBBFsNJ70vFIyrCDUeTXkT3YH16iow9t5wZesQ3QINMsbEORPnA4t9bj9Rs+tpoHv7wxuV9Yp7h/uvLUSGADYA9w4OFhwW9R11CmkUefp5eDnskB+TQ2eWIkSb5EwCnDnqNzeYR9ugtSbNTGYQAvLnUIg8cmElPFde6CRZVmPx8ekbTQU4CwylPUrA64jvE4HmVMqMbYX/UZB1NMtD2PZiwEvvUZ4MdO2K4helckFe0YcYOihhd54ouuVsBEYfea1J2rxHCAxLZh+lxbfDqeqkYA4HkeyFfP61U0nO/ffACf7NSy83CGNU3o5tElK2/ScmgCfF0c3UZ8MplIXqmxjWWGlN/2gk9TJfqfAG9lKcHClIe4j6XIopx9OPgYue4S/fxATGlh8ZzM9cR/cIudkogj7UmcBqYaUYYUh23awf/1aFAMAE0AsnhGO/ZsZnwymYnwo/OnR/TqMMX/9SSHXJBYx4CTwjOQCE3tT6uR44YR3oTiq4DTZ9dE9hNpsKdpWs7kNtpxtMcZsU/9XD1qrW0fd/FgfYzovsQ+77SaBZgI='
-
+var oneDriveToken = 'EwBYA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAYNwcOwWf6wH75zRGNr87ScVZnI5anY4KKVECJNv1THOrOZxekqv5XAyWivwig9kO7zTKVNP5gN5fih3G9YNWD5s3VF0Odp+KGxfzIH3OZNhVYo6efElmP4a1C6Y8mx5N4KmNTsSWEDkhrTy3nk3Lq347mmxOvyyJ0Ldx1x62Mi1V4ESCQyg8TpLvP//cJfggaoRBDy2GS9JDERC6h1s4feUPt5AnX440v9sjEtuyC6sHuMNeoLWifqAn0YsvMbe3Wf0MFjqgDTG7a/QKEK8bS+QRUeayWVi2O/PTqMOod9vt3axLTLKGiWK7GGCSB5qKJWQtdoA7lTedEQB2asLNwMDZgAACHtLQwDk3mcTKAK33KOEK7l+pvdJd03Szlf6YbUIt2WEmB+pMDQ1uDhzgOkM8LN3A4JpbaaJeNXEgRBIpvqGpYrXRIZxNvHM+PIUSOiwp+/moMmVNXa1hfnFK5H6noCKCDZgtMvUOsjJLJSfNfr/zE013QhnqPwrJV+sIqLPU+h+w6aY+CHzT8+FkLvoCYzEqpSGTMNMYDmbslfsmFxvzUgakykMfeFg+5Cpc1wuu/auTZ6GTt915QrO/vCn/nYRj/dlQcDAYB6gY7+Nl6kOetU0hrHBDcaas3FANRmLsleuDB21vIA4gxazAQY4m+y5JfkLFd31X345PSZiHfuxbXw3QS+lf5y9ya9X7J6NaiC51e8lr0obUrUC8LnHcl7QiEu5xl9x6kR7nlS6G0Eay3tpLxy4CV6bo2Wns3YZc2kS0HlnLM6tcX3dbsbr1j3vwwk2yTlp6Ew6uEq6iJe3dNDmbP56lpT+agMPV/zmh7GCyU1bBzpXnNMlm9DA4hhkD976rv5VEB1cm2zIdTyuV2ltnMknr8fnegWinhSzPdhsbq6mh6ilyYMb0s9H26U0AxPMhlxal8haFN0buKaVQngGKE6X0LqmHUi9LEc2jOiuDz0T4F6+QBXq5+NyGxNdIstv9XrElvHKzvjkI9bTAnleReMWl0f1afTQ4TcIWYjPFQthzuLD9iaKib4l60F+rQ8Fy6BJ929evAdOhNWoEvU2rXmKoIIV5xQd9ng2njgR2F1mAg=='
 function parseComponentIds(data) {
     var result = {
         folders: []
@@ -117,12 +116,12 @@ exports.getComponent = async function (componentID) {
 
         httpRequest.httpRequest(options)
             .then((result) => {
-                console.log(result);
+                
                 return result
             })
             .then((result) => {
                 var tempResult = parseResponse(result);
-                console.log(tempResult[1]);
+ 
                 if (tempResult[1] == null) {
                     reject(errorApi.create500Error('Internal Server Error'))
                 }

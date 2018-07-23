@@ -9,18 +9,16 @@ var dbo;
 
 
 function connect() {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         if (dbo == null) {
-            MongoClient.connect(url, { useNewUrlParser: true }, function (error, db) {
+            MongoClient.connect(url, { useNewUrlParser: true }, (error, db) => {
                 if (error) reject(error);
                 dbo = db.db("mydb");
-
                 resolve();
             });
         } else {
             resolve();
         }
-
     });
 }
 
@@ -28,10 +26,10 @@ function connect() {
 /* =======================================================MONGO DB=========================================== */
 
 exports.mongodbInsert = function mongodbInsert(collection, object) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         connect()
             .then(function (result) {
-                dbo.collection(collection).insertOne(object, function (error, result) {
+                dbo.collection(collection).insertOne(object,(error, result) => {
                     if (error) reject(error);
                     resolve("object inserted");
                 });
@@ -40,10 +38,10 @@ exports.mongodbInsert = function mongodbInsert(collection, object) {
 }
 
 exports.mongodbUpdate = function mongodbUpdate(collection, query, updatedObject) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         connect()
             .then(function (result) {
-                dbo.collection(collection).updateOne(query, updatedObject, function (error, result) {
+                dbo.collection(collection).updateOne(query, updatedObject,(error, result) => {
                     if (error) reject(error);
                     resolve('object updated');
                 });
@@ -51,11 +49,17 @@ exports.mongodbUpdate = function mongodbUpdate(collection, query, updatedObject)
     });
 }
 
-exports.mongodbQuery = function mongodbQuery(collection, query) {
-    return new Promise(function (resolve, reject) {
+exports.mongodbQuery = function mongodbQuery(collection, query, filter) {
+    var filterObject = {};
+
+    for (var i = 0, n = filter.length; i++; i < n) {
+        filterObject[filter[i]] = 1;
+    }
+
+    return new Promise((resolve, reject) => {
         connect()
             .then(function (result) {
-                dbo.collection(collection).find(query).toArray(function (error, result) {
+                dbo.collection(collection).find(query).project(filterObject).toArray((error, result) => {
                     if (error) reject(error);
 
                     resolve(result);
@@ -66,15 +70,27 @@ exports.mongodbQuery = function mongodbQuery(collection, query) {
 }
 
 exports.mongodbDelete = function mongodbDelete(collection, object) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         connect()
             .then(function (result) {
-                dbo.collection(collection).deleteOne(object, function (error, result) {
+                dbo.collection(collection).deleteOne(object,(error, result) => {
                     if (error) reject(error);
                     resolve('object deleted');
                 })
             })
     });
+}
+
+exports.mongodbFindAll = function mongodbFindAll(collection){
+    return new Promise((resolve,reject) => {
+        connect()
+            .then(result => {
+                dbo.collection(collection).find({}).toArray((error,result) => {
+                    if(error) reject(error);
+                    resolve();
+                })
+            })
+    })
 }
 
 /* ========================================================================================================= */
