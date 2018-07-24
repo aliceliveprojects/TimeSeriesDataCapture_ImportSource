@@ -1,9 +1,11 @@
 'use strict';
 
 const document = require('../database/documentTemplate');
+const databaseService = require('../database/database')
 const oneDriveService = require('../oneDrive/oneDriveService');
 const uuidv4 = require('uuid/v4');
 const csv = require('csvtojson');
+const errorApi = require('../error/error');
 
 
 
@@ -88,9 +90,9 @@ async function downloadTdata(result) {
         var tDataresult = await oneDriveService.getComponent(tDataId);
         var tempLogID = extractId(tDataresult['children'], 'Temperature_Log.txt');
         var runData = await oneDriveService.downloadComponent(tempLogID);
-       
+
         runData = await parseRunData(runData);
-        
+
         return runData;
     }
 
@@ -127,34 +129,41 @@ function parseRemark(remark) {
 
 }
 
-function parseDateAndTime(dateTimeStamp){
+function parseDateAndTime(dateTimeStamp) {
     dateTimeStamp = dateTimeStamp.split('-');
 
-    return([dateTimeStamp[0],dateTimeStamp[1]]);
+    return ([dateTimeStamp[0], dateTimeStamp[1]]);
 }
 
 async function downloadProcess(result) {
 
+    try {
+        var dateTimeStamp = parseDateAndTime(result['name']);
+        var annotationObject = {
 
-    var dateTimeStamp = parseDateAndTime(result['name']);
-    var annotationObject = {
+        }
 
+        var data = await Promise.all([downloadTdata(result), downloadRemarks(result)]);
+        var runData = data[0];
+        var annotations = data[1];
+        for (var i = 0, n = annotations.length; i < n; i++) {
+            var id = uuidv4();
+            var annotation = new document.Annotation(annotations[i][0], annotations[i][1]);
+            annotationObject[id] = annotation;
+        }
+
+        runData = new document.Component(result.id, dateTimeStamp[0], dateTimeStamp[1], runData, annotationObject);
+        console.log(runData);
+        //var databaseResult = await databaseService.insertRun(runData);
+        //console.log(databaseResult);
+        //databaseResult = await databaseService.queryRun(runData);
+        //console.log(databaseResult);
+    } catch (error) {
+        throw(error);
     }
 
-    var data = await Promise.all([downloadTdata(result),downloadRemarks(result)]);
-    var runData = data[0];
-    var annotations = data[1];
-    for(var i=0, n=annotations.length;i<n;i++){
-        var id = uuidv4();
-        var annotation = new document.Annotation(annotations[i][0],annotations[i][1]);
-        annotationObject[id] = annotation;
-    }
-    
-    runData = new document.Component(result.id,dateTimeStamp[0],dateTimeStamp[1],runData,annotationObject);
-    console.log(runData)
-   
-    console.log(annotations);
-   
+
+
 
 
 }
@@ -163,8 +172,6 @@ exports.getComponent = async function (componentID) {
     try {
         let result = await oneDriveService.getComponent(componentID);
         await downloadProcess(result);
-
-
         return (componentID);
     } catch (error) {
         console.log(error)

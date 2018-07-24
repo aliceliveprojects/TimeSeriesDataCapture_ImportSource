@@ -15,20 +15,35 @@ module.exports = {
         return service.deleteRun(run);
     },
 
-    queryRun: function (query) {
-        return service.queryRun(query);
+    queryRun: function (query, filter) {
+        return service.queryRun(query,filter);
+    },
+
+    getAuthentication: function(profileID, filter){
+        return service.getAuthentication(profileID,filter);
+    },
+
+    setAuthentication: function(authentication){
+        return service.setAuthentication(authentication);
+    },
+
+    getTag: function(tag,filter){
+        return service.getTag(tag,filter);
+    },
+
+    addTag: function(tag){
+        return service.addTag(tag,filter);
     },
 
     insertAlgorithm: function (algorithm) {
         return service.insertAlgorithm(algorithm);
     },
 
-    deleteAlgorithm: function (algorithm) {
-        return service.deleteAlgorithm(algorithm);
+    getAllAlgorithms: function(){
+        return service.getAllAlgorithms();
     },
 
-
-    queryAlgorithm: function (query) {
-        return service.queryAlgorithm(query);
+    getAlgorithm: function(id){
+        return service.getAlgorithm(id);
     }
 }

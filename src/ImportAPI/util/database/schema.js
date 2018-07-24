@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-
+const database = require('./databaseService');
 
 var url = "mongodb://localhost:27017/timeSeriesDatabase";
 
@@ -24,7 +24,7 @@ async function createCollections() {
 
     const collectionPromises = collections.map(createCollection,{dbo : dbo});
     await Promise.all(collectionPromises);
-    db.close();
+    //db.close();
   });
 }
 
@@ -37,5 +37,15 @@ function createCollection(collectionName) {
 }
 
 
-createDatabase();
+//createCollections();
+
+async function test(){
+  var object = {
+    naem:34243
+  }
+
+  database.mongodbDelete('runsCollection',object);
+}
+
+test();
 

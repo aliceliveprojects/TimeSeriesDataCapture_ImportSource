@@ -11,7 +11,8 @@ var runobject = {
 /* =======================================================RUN QUERIES================================================ */
 exports.insertRun = async function insertRun(run) {
     try {
-        return (await service.mongodbInsert('runs', run));
+       
+        return (await service.mongodbInsert('runsCollection', run));
     } catch (error) {
         throw (error)
     }
@@ -22,7 +23,7 @@ exports.updateRuns = async function updateRuns(query, updatedRun) {
         $set : updatedRun
     }
     try {
-        return (awaitservice.mongodbUpdate('runs', query, updatedRunObject));
+        return (awaitservice.mongodbUpdate('runsCollection', query, updatedRunObject));
     } catch (error) {
         throw (error);
     }
@@ -30,7 +31,7 @@ exports.updateRuns = async function updateRuns(query, updatedRun) {
 
 exports.deleteRun = async function deleteRun(run) {
     try {
-        return (await service.mongodbDelete('runs', run));
+        return (await service.mongodbDelete('runsCollection', run));
     } catch (error) {
         throw (error);
     }
@@ -38,7 +39,7 @@ exports.deleteRun = async function deleteRun(run) {
 
 exports.queryRun = async function queryRun(query, filter) {
     try {
-        return (await service.mongodbQuery('runs', query));
+        return (await service.mongodbQuery('runsCollection', query));
     } catch (error) {
         throw (error);
     }

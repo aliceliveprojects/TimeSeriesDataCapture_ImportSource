@@ -26,11 +26,13 @@ function connect() {
 /* =======================================================MONGO DB=========================================== */
 
 exports.mongodbInsert = function mongodbInsert(collection, object) {
+  
     return new Promise((resolve, reject) => {
         connect()
             .then(function (result) {
                 dbo.collection(collection).insertOne(object,(error, result) => {
                     if (error) reject(error);
+                    
                     resolve("object inserted");
                 });
             })
@@ -53,10 +55,12 @@ exports.mongodbUpdate = function mongodbUpdate(collection, query, updatedObject)
 
 exports.mongodbQuery = function mongodbQuery(collection, query, filter) {
     var filterObject = {};
-
-    for (var i = 0, n = filter.length; i++; i < n) {
-        filterObject[filter[i]] = 1;
+    if(filter != null){
+        for (var i = 0, n = filter.length; i++; i < n) {
+            filterObject[filter[i]] = 1;
+        }
     }
+  
 
     return new Promise((resolve, reject) => {
         connect()
