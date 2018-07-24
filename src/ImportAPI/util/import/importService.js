@@ -1,53 +1,175 @@
 'use strict';
 
-const errorApi = require('../error/error');
-var oneDriveService = require('../oneDrive/oneDriveService');
+const document = require('../database/documentTemplate');
+const oneDriveService = require('../oneDrive/oneDriveService');
+const uuidv4 = require('uuid/v4');
 const csv = require('csvtojson');
-const Stopwatch = require("node-stopwatch").Stopwatch;
 
 
 
-exports.getComponent = async function (componentID) {
+function extractId(array, key) {
+    var arrayLength = array.length;
+    if (arrayLength > 0) {
+        for (var i = 0, n = arrayLength; i < n; i++) {
+            if (array[i].name === key) {
+                return (array[i].id);
 
-    /* var stopwatch = Stopwatch.create();
+            }
+        }
+    }
+
+    return null;
+}
+
+async function parseRunData(data) {
 
     var options = {
         noheader: true,
         output: 'csv',
         delimiter: 'auto'
     }
-    try {
-        let result = await oneDriveService.getComponent(componentID);
-        let csvArray = await csv(options).fromString(result)
-        result = await parseArray({},csvArray);
-        
-        return (result);
-    } catch (error) {
-        console.log(error);
-        throw (error);
-    } */
 
-    try {
-        let result = await oneDriveService.getComponent(componentID);
-       
-        var componentsChildren = 'children' in result ? componentsChildren = result['children'] : componentsChildren=[];
-        var componentsChildrenLength = componentsChildren.length;
-        if(componentsChildrenLength > 0){
-            for(var i=0,n=componentsChildrenLength;i<n;i++){
-                if(componentsChildren[i].name === 'T-Data'){
-                    console.log("T_data found");
-                }
-            }
-        }else{
-            throw(errorApi.create500Error('folder does not contain any children'));
-        }
-        
-        console.log(test);
-        return(result)
-    } catch (error) {
-        throw(error);
+    var csvArray = await csv(options).fromString(data);
+
+    var jsonOptions = {
+        headers: [],
+        rowStart: 2
     }
 
+    for (var i = 0, n = csvArray[0].length; i < n; i++) {
+        jsonOptions.headers.push(csvArray[0][i]);
+    }
+
+    var jsonObject = await parseRunArray(jsonOptions, csvArray);
+    return jsonObject;
+}
+
+function parseRunArray(options, array) {
+    var object = {
+    }
+
+    var headers = false || options.hasOwnProperty('headers');
+
+    var rowStart = 0;
+
+    if (options.hasOwnProperty('rowStart')) {
+        rowStart = options.rowStart;
+    }
+
+
+    if (headers) {
+        for (var i = 0, n = options.headers.length; i < n; i++) {
+            object[options.headers[i]] = [];
+        }
+    } else {
+        for (var i = 0, n = array[rowStart].length; i < n; i++) {
+            object[i] = [];
+        }
+    }
+
+
+    for (var row = rowStart, n = array.length; row < n; row++) {
+        for (var element = 0, m = array[row].length; element < m; element++) {
+            if (headers) {
+                object[options.headers[element]].push(array[row][element]);
+            } else {
+                object[element].push(array[row][element]);
+            }
+
+        }
+    }
+
+    return object;
+}
+
+async function downloadTdata(result) {
+    var tDataId = extractId(result['children'], 'T-Data');
+    if (tDataId != null) {
+        var tDataresult = await oneDriveService.getComponent(tDataId);
+        var tempLogID = extractId(tDataresult['children'], 'Temperature_Log.txt');
+        var runData = await oneDriveService.downloadComponent(tempLogID);
+       
+        runData = await parseRunData(runData);
+        
+        return runData;
+    }
+
+    return null
+}
+
+async function downloadRemarks(result) {
+    var remarksId = extractId(result['children'], 'Remarks');
+    if (remarksId != null) {
+        var remarksData = await oneDriveService.getComponent(remarksId);
+        var children = remarksData['children'];
+        const remarkPromises = children.map(downloadRemark)
+        var annotations = await Promise.all(remarkPromises);
+        return annotations;
+    }
+
+    return null;
+}
+
+async function downloadRemark(child) {
+    var remark = await oneDriveService.downloadComponent(child.id);
+    return (parseRemark(remark));
+}
+
+function parseRemark(remark) {
+    var numberExpression = /[-0-9]+/
+
+    var seconds = numberExpression.exec(remark)[0];
+    var description = remark.split('seconds')[1];
+    description = description.replace(/\r/g, '');
+    description = description.replace(/\n/g, '');
+
+    return ([seconds, description]);
+
+}
+
+function parseDateAndTime(dateTimeStamp){
+    dateTimeStamp = dateTimeStamp.split('-');
+
+    return([dateTimeStamp[0],dateTimeStamp[1]]);
+}
+
+async function downloadProcess(result) {
+
+
+    var dateTimeStamp = parseDateAndTime(result['name']);
+    var annotationObject = {
+
+    }
+
+    var data = await Promise.all([downloadTdata(result),downloadRemarks(result)]);
+    var runData = data[0];
+    var annotations = data[1];
+    for(var i=0, n=annotations.length;i<n;i++){
+        var id = uuidv4();
+        var annotation = new document.Annotation(annotations[i][0],annotations[i][1]);
+        annotationObject[id] = annotation;
+    }
+    
+    runData = new document.Component(result.id,dateTimeStamp[0],dateTimeStamp[1],runData,annotationObject);
+    console.log(runData)
+   
+    console.log(annotations);
+   
+
+
+}
+
+exports.getComponent = async function (componentID) {
+    try {
+        let result = await oneDriveService.getComponent(componentID);
+        await downloadProcess(result);
+
+
+        return (componentID);
+    } catch (error) {
+        console.log(error)
+        throw (error);
+    }
 }
 
 exports.getComponentIDs = async function (folderID) {
@@ -66,33 +188,4 @@ exports.getOperations = async function () {
 
 }
 
-function downloadComponent(componentID){
 
-}
-
-function parseRunArray(options,array){
-    console.log(array[0]);
-    var object = {
-    }
-
-    var headers = false || options.hasOwnProperty('headers');
-
-    if(headers){
-        for(var i=0,n=options.headers.length;i<n;i++){
-            object[header] = [];
-        }
-    }else{
-        for(var i=0, n=array[rowStart].length;i<n;i++){
-            object[i] = [];
-        }
-    }
-
-
-    for(var row=0, n=array.length;row<n;row++){
-        for(var element=0, m =array[row].length;element<m;element++){
-            object[element].push(array[row][element]);
-        }
-    }
-   
-   return object;
-}

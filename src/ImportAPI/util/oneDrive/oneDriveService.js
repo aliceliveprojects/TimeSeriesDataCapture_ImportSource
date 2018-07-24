@@ -2,7 +2,7 @@
 
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
-var oneDriveToken = 'EwBQA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAATmDYkHWxruoQyV0pkXKV5JRCpbqEFJKv8QzB+aR0dELRFt0meuUXApslEgg5xQoHdGYC9MPCqcfIlfimDgDUEmh8jvsk9gE8K/B/2ymauzk61zQGw84Er6/rlJ0ZLrcHbR4xPOYV6fK16Np1UP7NEUnEIUjUEMr8njo7Sn9hFKzxbk8wUy0mT1k0ESaDDDeONIRx24K/JxIRQkQkje1CkVcor8DZDJJFd69k6afQDFBu+U+Z6QCjV1FMuBjk+MocdnX3Dj7KGfNnnasXer719bP1uWWpZRCrdFzpMo9krXfVaDvpFUmhS0nU43Ltp2uSci1XB2XpSmjLhyugO7v2hQDZgAACNRPXFAQTF2FIAKurIiQuKJbAHCtaVnQRqTP0S813jPc6+9Ko17QMmNtA8OcgixUc6Xgsbzdv73Z9QA7PBnNGkax3XShO/S9EkCUEr0b+Dy9Os8A23xRu0Ct4K7Y/Fvkx2ioDqvjGe5I4fg/CqUfdq2JpgMLX1XXeS98Clpra01EpUBoO1+lhNz4u+xv1nGdqjo2N4x/LBlSBqM9WmMxHvZkTJwxvRtduY5vKPoMy4GCieV1X7XYlVDypM5QYzSVhmDwQSwINH9rLWb6l/CU2Qqk03Rvye3eh7fx4Hs5+1+5lhfooxV2+Kzx9YNYfuJEH6qDeOEXLWsfwK4Lee/Z+WNQFOiI23GqvR08OrW0/J6+TUYW+24hxmAsDhg5lOdMkonMKm7l3pkWGlM1ukghu/CPpJ8EXGA3H4BKing2SS3Yx7wBGZtEifIp8i3suSqiq9TqkzEU3V/ha9YZ6akxFTtZzyGYbkBh0H/L8mdZdWYbj+Tc7R05ieMfCfFqKI+v4elskgJ2Dtp+eSRPogzOqremo9OspOEvFYy1+iGq5Di8K404wjYwAlSlKiHf9QzwBD4jPT3hQ0vxt0dB9QfNN/ui6gngeWzQqAfNEv5ev39t4ZpCMKDGoAkKQ6IwFwpCDaIOM+nd1FZm+B3VcwkZIVSO0+4xU2mHkN580gvLGLjAJJ387q74a+AoDTzAWqRKPp6mtHKs9IdaqDFspFoi9uy36LdvtpizQcUXZgI='
+var oneDriveToken = 'EwBYA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAQXvquNSJ8zrdi3yR2nZb1L1P7f27D3LeMP9G/EwaBmF0fwuEpVB5xLb34Xqbuax6XSEjFhH76cvAAiLCmn8Rg5yQHdqQvNssCf56jp2+/5csxo5SD13a3wS2GRTXLZkC5tO8yDE1BHFnSVhccwtL8LDw+ljeCTmKh1KybRAhu/N8i/8tEWAPsMqoppCAsFXIy65Vy1WcyonBB7s7NKluNDukCrwUiDulZYSxHdRBnHkhB9o8OdmXH4fGHkJFcaH86vZnRPN0R3TJ+Z+5YVqUKPyeHhEoXWhn5Ial/yGSaBTcvl7pbm5z2gSiPbbtLdxDFUN5T7rAhlBNOvmKUH3rVIDZgAACD38I7v9rpU8KAIqQ5FiJFe4QQiNVZOj8pBEc2p3u0JSyl41Bks4RtpxYuM+GOQYNjNPPCEMZGzNS4j6PCrdJZy33rIzRvT/EcX5Jn1IhsdhizevFQXtemu3oBpGdTv2s3NdxrHtGaF6ehoCSDyPEEA4SphTRT7ZsloFbEb5/d0ziPwaw6JyjgqYxPGWpXR/87B0Kl2MRrAZtz1zy7p6potlVW3jc9iCxsXdVzlUFL4j4sEbLnnhONeBHtcfYDogKkXSl6yQgvsybkMbQO+Wtmbl/QMuod18BzQHknQHL5mE33bXtv7CFiTcjy4zCv0ih4s+67h4VEh3s8IKnW4/a9BcMZz7pLVukTK0i0kLVejipQMDognB9CjKoMbAu1CKmpTC2Ruyft1ghUAOnnxP3pmkMaz1ILWDT5XWV3NVt3j19VuEA93Nhb+K2FdCcW24kUbe+Mpt14TypFSr+ITQtQBjBzUQgYh08liJUsOwdPFUUupI2XBjqrUWCeAOBD4dCQob7gWG+jKg+OBMrPzLcAdOk0NnZrCItSBcGyctGKN/IFvtRGIFZCljwhassN8lVxaSii5VJLAXPMWZ47htDGJdQF49hXx1cdTo2ylwoI1wD8fnXsLQmpo4hwh45opkbYfyFrxgPOPN1MCqz4yy89qCouLRPexrGNliIay6K8EYWKOuVUrW+BMd1XkN/3E0Ap7V//wzrHQUekSL0jhAkc6STMhXA/M3f7dxcT5QzF8zjv5mAg=='
 function parseComponentIds(data) {
     var result = {
         folders: []
@@ -57,7 +57,7 @@ function parseError(error) {
        
     }
 
-    return (errorApi.createError(errorCode,errorResponse));
+    throw(error);
 
 }
 
@@ -78,21 +78,20 @@ exports.getComponentIDs = async function (folderID) {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'bearer ' + oneDriveToken
-        }
+        },
+        timeout: 4000
     };
 
     try {
         var response = await httpRequest.httpRequest(options);
-        var result = parseResponse(response);
-        if (result[1] != null) {
-            return (parseComponentIds(JSON.parse(result[1])));
-        } else {
-            return (response);
-        }
+        response = JSON.parse(response);
+        response = parseComponentIds(response);
+        return response;
     } catch (error) {
-        console.log(error);
-        error = parseResponse(error);
-        throw (parseError(error));
+
+        
+        console.log('getComponentsIDs connect reject');
+        throw(error);
     }
 }
 
@@ -106,17 +105,13 @@ exports.downloadComponent = async function (componentID) {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'bearer ' + oneDriveToken
-        }
+        },
+        timeout: 4000
     };
 
     try {
         var response = await httpRequest.httpRequest(options);
-        response = parseResponse(response);
-        if (response[1] == null) {
-            throw (errorApi.create500Error('Internal Server Error'));
-        }
-
-        response = JSON.parse(response[1]);
+        response = JSON.parse(response);
         var url = new URL(response['@microsoft.graph.downloadUrl']);
 
         var options = {
@@ -131,16 +126,13 @@ exports.downloadComponent = async function (componentID) {
         };
 
         response = await httpRequest.httpRequest(options);
-        var result = parseResponse(response);
-
-        if (result[1] != null) {
-            throw (result[1]);
-        } else {
-            response(result);
-        }
+        console.log('download Component connect success');
+        return(response);
     } catch (error) {
-        error = parseResponse(error);
-        throw (parseError(error));
+        /* error = parseResponse(error);
+        throw (parseError(error)); */
+        console.log('download Component connect reject');
+        throw(error);
     }
 }
 
@@ -148,30 +140,25 @@ exports.downloadComponent = async function (componentID) {
 
 
 exports.getComponent = async function (componentID) {
-    var select = encodeURI('select=id,name,folder');
     var options = {
         protocol: 'https:',
         host: 'graph.microsoft.com',
-        path: '/v1.0/me/drive/items/' + encodeURI(componentID) + '?expand=children(select=id,name)' +'&'+select,
+        path: '/v1.0/me/drive/items/' + encodeURI(componentID) + '?expand=children(select=id,name)',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'bearer ' + oneDriveToken
-        }
+        },
+        timeout: 4000
     };
 
     try {
         var response = await httpRequest.httpRequest(options);
-        var result = parseResponse(response);
-        if (result[1] != null) {
-            return (JSON.parse(result[1]));
-        } else {
-            return (response);
-        }
+        response = JSON.parse(response);
+        return(response);
     } catch (error) {
-        console.log(error);
-        error = parseResponse(error);
-        throw (parseError(error));
-
+      
+        console.log('Get Component connect reject');
+        throw(error);
     }
 }
 

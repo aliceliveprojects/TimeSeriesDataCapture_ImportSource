@@ -31,7 +31,6 @@
     "memored": "^1.1.1",
     "minizip-asm.js": "^1.0.10",
     "mongodb": "^3.1.1",
-    "node-stopwatch": "0.0.1",
     "pg": "6.2.3",
     "pg-copy-streams": "^1.2.0",
     "promise": "^8.0.1",
@@ -39,6 +38,7 @@
     "sleep": "^5.1.1",
     "swagger-tools": "0.10.1",
     "throng": "4.0.0",
+    "uuid": "^3.3.2",
     "xmlhttprequest": "^1.8.0",
     "zip-folder": "^1.0.0"
   }
