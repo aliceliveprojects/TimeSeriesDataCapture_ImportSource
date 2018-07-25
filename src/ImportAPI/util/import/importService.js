@@ -217,8 +217,6 @@ async function downloadProcess(result, algorithmID) {
         console.log(runData);
         var databaseResult = await databaseService.insertRun(runData);
         console.log(databaseResult);
-        databaseResult = await databaseService.queryRun(runData);
-        console.log(databaseResult);
     } catch (error) {
         throw (error);
     }
