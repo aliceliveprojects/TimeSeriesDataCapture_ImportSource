@@ -84,19 +84,27 @@ function parseRunArray(options, array) {
     return object;
 }
 
-async function downloadTdata(result) {
-    var tDataId = extractId(result['children'], 'T-Data');
-    if (tDataId != null) {
-        var tDataresult = await oneDriveService.getComponent(tDataId);
-        var tempLogID = extractId(tDataresult['children'], 'Temperature_Log.txt');
-        var runData = await oneDriveService.downloadComponent(tempLogID);
+async function downloadTdata(result, algorithmID) {
 
-        runData = await parseRunData(runData);
+    try {
+        var tDataId = extractId(result['children'], 'T-Data');
+        if (tDataId != null) {
+            var tDataresult = await oneDriveService.getComponent(tDataId);
+            var tempLogID = extractId(tDataresult['children'], 'Temperature_Log.txt');
+            var runData = await oneDriveService.downloadComponent(tempLogID);
 
-        return runData;
+            runData = await parseRunData(runData);
+            runData = await RthCalculation(algorithmID, runData);
+
+            return runData;
+        }
+
+        return null
+
+    } catch (error) {
+        throw(error);
     }
 
-    return null
 }
 
 async function downloadRemarks(result) {
@@ -135,7 +143,60 @@ function parseDateAndTime(dateTimeStamp) {
     return ([dateTimeStamp[0], dateTimeStamp[1]]);
 }
 
-async function downloadProcess(result) {
+async function RthCalculation(algorithmID, data) {
+
+    try {
+        var response = await getAlgorithm(algorithmID);
+        console.log(response);
+        var params = response.parameters
+
+
+        var algorithmFn = Function('T1', 'T2', 'DAC', response.algorithm);
+        data['RTH'] = []
+        for (var i = 0, n = data['Time'].length; i < n; i++) {
+            var T1 = data[params[0]][i];
+            var T2 = data[params[1]][i];
+            var DAC = data[params[1]][i];
+
+            var RTH = algorithmFn(T1, T2, DAC);
+
+            data['RTH'].push(RTH);
+        }
+
+        return data;
+
+    } catch (error) {
+        throw(error);
+    }
+
+
+}
+
+async function getAlgorithm(algorithmID) {
+    try {
+        var response;
+        if (algorithmID != undefined) {
+            response = await databaseService.getAlgorithm(algorithmID);
+            if (response === undefined) {
+                response = await databaseService.getDefaultAlgorithm();
+                console.log(response);
+            }
+
+        } else {
+            response = await databaseService.getDefaultAlgorithm();
+        }
+
+        return response;
+
+    } catch (error) {
+        throw (errorApi.create500Error(error))
+    }
+
+}
+
+async function downloadProcess(result, algorithmID) {
+
+
 
     try {
         var dateTimeStamp = parseDateAndTime(result['name']);
@@ -143,7 +204,7 @@ async function downloadProcess(result) {
 
         }
 
-        var data = await Promise.all([downloadTdata(result), downloadRemarks(result)]);
+        var data = await Promise.all([downloadTdata(result, algorithmID), downloadRemarks(result)]);
         var runData = data[0];
         var annotations = data[1];
         for (var i = 0, n = annotations.length; i < n; i++) {
@@ -154,24 +215,21 @@ async function downloadProcess(result) {
 
         runData = new document.Component(result.id, dateTimeStamp[0], dateTimeStamp[1], runData, annotationObject);
         console.log(runData);
-        //var databaseResult = await databaseService.insertRun(runData);
-        //console.log(databaseResult);
-        //databaseResult = await databaseService.queryRun(runData);
-        //console.log(databaseResult);
+        var databaseResult = await databaseService.insertRun(runData);
+        console.log(databaseResult);
+        databaseResult = await databaseService.queryRun(runData);
+        console.log(databaseResult);
     } catch (error) {
-        throw(error);
+        throw (error);
     }
-
-
-
-
-
 }
 
-exports.getComponent = async function (componentID) {
+
+
+exports.getComponent = async function (componentID, algorithmID) {
     try {
         let result = await oneDriveService.getComponent(componentID);
-        await downloadProcess(result);
+        await downloadProcess(result, algorithmID);
         return (componentID);
     } catch (error) {
         console.log(error)

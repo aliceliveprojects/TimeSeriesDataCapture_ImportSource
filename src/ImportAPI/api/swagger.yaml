@@ -61,6 +61,11 @@ paths:
         description: "Component ID specifies which component to download "
         required: true
         type: "string"
+      - name: "algorithmID"
+        in: "query"
+        description: "alogrithm used to calculate Rth"
+        required: false
+        type: "string"
       responses:
         200:
           description: "Status 200"

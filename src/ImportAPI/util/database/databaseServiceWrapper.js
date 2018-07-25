@@ -1,6 +1,7 @@
 'use strict'
 
 var service = require('./databaseService');
+var ObjectID = require('mongodb').ObjectID;
 
 var runobject = {
     _id: 101,
@@ -123,10 +124,22 @@ exports.getAllAlgorithms = async function getAllAlgorithms(){
 
 exports.getAlgorithm = async function getAlgorithm(id) {
     var query = {
-        _id : id
+        _id : new ObjectID(id)
     }
     try {
-        return (await service.mongodbQuery('algorithmsCollection',query));
+        return ((await service.mongodbQuery('algorithmsCollection',query))[0]);
+    } catch (error) {
+        throw(error);
+    }
+}
+
+exports.getDefaultAlgorithm = async function getDefaultAlgorithm(){
+    var query = {
+        name: 'default'
+    }
+
+    try {
+        return ((await service.mongodbQuery('algorithmsCollection',query))[0]);
     } catch (error) {
         throw(error);
     }

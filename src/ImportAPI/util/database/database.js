@@ -45,5 +45,9 @@ module.exports = {
 
     getAlgorithm: function(id){
         return service.getAlgorithm(id);
+    },
+
+    getDefaultAlgorithm : function(){
+        return service.getDefaultAlgorithm();
     }
 }

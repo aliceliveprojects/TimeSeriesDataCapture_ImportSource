@@ -37,15 +37,5 @@ function createCollection(collectionName) {
 }
 
 
-//createCollections();
 
-async function test(){
-  var object = {
-    naem:34243
-  }
-
-  database.mongodbDelete('runsCollection',object);
-}
-
-test();
 

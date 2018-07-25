@@ -13,7 +13,7 @@ function connect() {
         if (dbo == null) {
             MongoClient.connect(url, { useNewUrlParser: true }, (error, db) => {
                 if (error) reject(error);
-                dbo = db.db("mydb");
+                dbo = db.db("timeSeriesDatabase");
                 resolve();
             });
         } else {
@@ -62,6 +62,7 @@ exports.mongodbQuery = function mongodbQuery(collection, query, filter) {
     }
   
 
+
     return new Promise((resolve, reject) => {
         connect()
             .then(function (result) {
@@ -93,7 +94,7 @@ exports.mongodbFindAll = function mongodbFindAll(collection){
             .then(result => {
                 dbo.collection(collection).find({}).toArray((error,result) => {
                     if(error) reject(error);
-                    resolve();
+                    resolve(result);
                 })
             })
     })

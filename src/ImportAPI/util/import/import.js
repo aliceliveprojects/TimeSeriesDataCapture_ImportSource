@@ -4,8 +4,8 @@ var service = require('./importService');
 
 module.exports = {
    
-    getComponent: function(componentID){
-        return service.getComponent(componentID);
+    getComponent: function(componentID,algorithmID){
+        return service.getComponent(componentID,algorithmID);
     },
 
     getComponentIDs: function(folderID){

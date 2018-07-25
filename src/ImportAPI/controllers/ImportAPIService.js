@@ -11,8 +11,9 @@ var importService = require('../util/import/import');
  **/
 exports.getComponent = function(args,res,next) {
   let componentID = args.componentID.value;
+  let algorithmID = args.algorithmID.value;
 
-  importService.getComponent(componentID)
+  importService.getComponent(componentID,algorithmID)
   .then((result) => {
     httpUtil.endHttpOK(result,res);
   })
