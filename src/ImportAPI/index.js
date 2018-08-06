@@ -1,3 +1,4 @@
+
 'use strict';
 
 var debug = require('debug');
@@ -5,6 +6,7 @@ var error = debug('app:error');
 var log = debug('app:log');
 var userCache = require('./util/users/userCache');
 var fs = require('fs');
+
 
 
 // set this namespace to log via console.log 
@@ -15,7 +17,7 @@ log('LOGGING: Log to stdout via console.info');
 log("ENVIRONMENT: **********************");
 log(process.env);
 log("**********************");
-
+console.log(process.env.debug);
 var getAsBoolean = function(key){
   var result = false; 
 
@@ -191,4 +193,4 @@ if (disableClustering === false) {
 }else{
   log("CLUSTERING: initialise");
   initialise();
-} 
+}  
