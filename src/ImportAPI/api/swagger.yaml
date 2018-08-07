@@ -76,6 +76,34 @@ paths:
         401:
           description: "Unauthorized"
       x-swagger-router-controller: "ImportAPI"
+  /component/{componentID}/preview:
+    get:
+      tags:
+      - "ImportAPI"
+      summary: "Gets a specific component"
+      description: "gets a specific component by component ID from oneDrive"
+      operationId: "getComponentPreview"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "componentID"
+        in: "path"
+        description: "Component ID specifies which component to download "
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              type: 'string'
+              example: 'run object'
+        400:
+          description: "Bad Request"
+        401:
+          description: "Unauthorized"
+      x-swagger-router-controller: "ImportAPI"
   /operations:
     get:
       tags:
@@ -98,4 +126,6 @@ paths:
         400:
           description: ""
       x-swagger-router-controller: "ImportAPI"
-definitions: {}
+definitions: {
+  
+}

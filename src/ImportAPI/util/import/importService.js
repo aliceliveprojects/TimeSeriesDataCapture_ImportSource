@@ -235,6 +235,12 @@ exports.getComponent = async function (componentID, algorithmID) {
     }
 }
 
+exports.getComponentPreview = async function (componentID) {
+    return {
+        componentID: componentID
+    }
+}
+
 exports.getComponentIDs = async function (folderID) {
 
     console.log(folderID);

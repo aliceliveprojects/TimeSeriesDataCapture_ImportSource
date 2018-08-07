@@ -8,6 +8,10 @@ module.exports = {
         return service.getComponent(componentID,algorithmID);
     },
 
+    getComponentPreview: function(componentID){
+        return service.getComponentPreview(componentID);
+    },
+
     getComponentIDs: function(folderID){
         return service.getComponentIDs(folderID);
     },

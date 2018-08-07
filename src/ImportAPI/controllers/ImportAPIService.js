@@ -22,6 +22,19 @@ exports.getComponent = function(args,res,next) {
   })
 }
 
+exports.getComponentPreview = function(args,res,next) {
+  let componentID = args.componentID.value;
+
+  importService.getComponentPreview(componentID)
+  .then((result) => {
+    httpUtil.endHttpOK(result,res);
+  })
+  .catch((error) => {
+    httpUtil.endHttpErr(error,res);
+  })
+}
+
+
 
 /**
  * Gets IDs available for import
