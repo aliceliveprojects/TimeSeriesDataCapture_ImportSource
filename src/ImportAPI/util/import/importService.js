@@ -236,8 +236,25 @@ exports.getComponent = async function (componentID, algorithmID) {
 }
 
 exports.getComponentPreview = async function (componentID) {
-    return {
-        componentID: componentID
+    try {
+        let result = await oneDriveService.getComponent(componentID);
+        var tDataId = extractId(result['children'], 'T-Data');
+       
+        if (tDataId != null) {
+            var tDataresult = await oneDriveService.getComponent(tDataId);
+
+            var tempLogID = extractId(tDataresult['children'], 'Temperature_Log.txt');
+            var runData = await oneDriveService.downloadComponent(tempLogID);
+
+            runData = await parseRunData(runData);
+            console.log(runData);
+            return runData;
+        }
+
+        return null
+
+    } catch (error) {
+        
     }
 }
 

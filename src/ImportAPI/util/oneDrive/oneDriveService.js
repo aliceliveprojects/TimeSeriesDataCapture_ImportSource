@@ -2,7 +2,7 @@
 
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
-var oneDriveToken = 'EwBYA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAROhzhW388YXcxK9c95t3TGHe1U57dwCMjTiZRYu4539kGMVrXz0dsAwRnFy0dmcvXmnLjkuJLQepYBrkjeVuJVUa/hYefXbQbPg10nNj2ZKGM0zibxRyFeYEIvh7bzboCZxGoH5QIAUKGA7Lk9b0Iuic2gokgIqylUD97hoOkJGZ0SnfnxizejIJIfytFT8N21WNlbm4P9qsp/Evpeu98smfaOfCT9Pn7vU4S2bThFhKHHRNrodPqpvA/tQS6Y29+RwfLpIfiDKHGNm7Dbfmq8Uet521airU5N4jg09D/wn1FNSEdSdbJjR4iir5a7CMHWFSX34/5YLKsEwhn4BkYwDZgAACLy619QO2u1jKAL7AhOwjsh3fl7pwUTc1pHKHHEXJV4HoD1bQSUJztTcTYvQih/ckINR/v6XPIPLkjcUoucvwW4IIvNJRe0oA7WDkMVC+iB2qNvLVM5o8CN9avb+egJ74Ie2Ex9Bj1AfIMWY7L3SFF2sQAYBRTcAMNKn0jsveUohUVVctQZvx8iHW3nbOPk3fnI8TibFyQ8a43j0wRcleSoDByF8Uj40yHc8S4oY8YPymPnhWFxSxGxh63LHbclkBGMQABNknMxkQvcrxJ3mSiUOidPR0t3vodCyqeaQ1TLxQCudnlGLoRiiDsWvF2Ggq2ZebS+t+Jz+6ULi/h+R6zZLMYfxUcNEUpbvILvLJBDXjbejy/1ucMbOXyTQhIaGvcu35BSWwxKmW6BfSnci+8fEL6zW4rfrQtmdd7LfJ42TemSPrrYf88NMJIzlV8q0H/xeLkIuB7P5O+CL4n26rl54Q2yWjgJPY+g2S65Uj1GOLWavT+WJw4osgvXKL/F/T4vpJ0BnWLlsnv+HUVkVurBxXO9tnYMHYf4kes9e6fhcHEMUA/4cKColszcrN6xEjVYsqhJqnmz6hqTm1d2Q3z8++CR1kcYN2kJ2qIK/wUNiV3ncMvagsN5jXN3QAGsVkzo0WJfA1TMHxi07u66RuzcAlUKdZK7QVQcnJ37DrTbLwzMmj4/Y5mdEpjxvTfZKvXRVeHdBiD0qbjD723hdRBw9qO6vTdJ41sJBZhaaHwVKp7VmAg==';
+var oneDriveToken = 'EwBYA8l6BAAURSN/FHlDW5xN74t6GzbtsBBeBUYAAau664Yvny2f+TWgIHEh9sO2ZtREosnxEclhFkajzn0NA0ucrk4l759L7vbl8w5KA82O1VDI6jH/8Cf4bWAa14drfXbpBl1Apc1OI/N5OPpfaWYxrqaMpUkqbSgvkcUOvPuMMH6/BZlgQUKox+rUt0naAcuqyR2xJsQlvUBkToudBUnze2KPdhSUheWamcxHrIP4ywIdqYZ4/44b2hKW2WVtoYzkDXnlmHgbP+C3tSahNLIlhAeLKMtH0IX56JvPnNtuhnWO3rc9KtJZpauAfomois+EiDsgR/yDKAAIxxjt/e9fPmcHBePQYRdHfIXCzcvCIA3eNx7BIzc52UaZO7EDZgAACGJKt7r+WhidKAKf+667BXUDiAAoNuTIwgcD1sYWH6OBtBn9rvYc1RFHu0aCKaj7YpFS9s+ewefo7IaCSFD3K/oDO/E/wQZBTAsS5ywCluEiP6fbAYuskG+qk0QKLHgpKckUcQpUUqYZR/id5dxaGDcA6OtGQ8Bk+NQWJwUP5z4Za+x1A0YmJmpffza1Sw2eHvQOy/iKae8GRZ1xAY244UdIomy3WNiSeNMhVjm7LG+J7AEOMuBblx2xKIc4nsQAVGDvdj2vMH9Mp5AhiThiSCWoMptORzcCnKKJ7z/Z7iiFYG8QwHt4raG7HFAgOvnhRPkGGMafftms7M+gsDLd4aLPdgR7qtQcwEcWd3n8LQEtGLXRbVlYwsFFZq4KbtpZgZdhE+H7k/xBAyGLR7oC/u6pT0Vr9lALE9vzQpPuVm3AQY+AgjO0hyeel6ciVJygfmFeiVWbBlB+o2xcfzk80vLmHN71wT7CS+229UvtSOQgN6qiXniOjyyMQV1lOnIEuVdpNqAj6QXwiVap3N5XhPEK4dIjw7roRVNr+BR42gna9s5t7ZobXsWkQO4M1ygHyN2QbMBQWVOWGozRVL434h1LD4f6rX4JpESs+T3vIwZA3OBLxZs+hgh7gSYVHrd5kyDie7hGbbNtxk86zepRqXW4wWzBMRwjaTVhhY/toWLxLTibMEWEENvdpqZ57MtImSLVw2/R+IxI+bvuMr2H6LcxgXa8P3DQnjK1rwT7e6DJ/YlmAg==';
 function parseComponentIds(data) {
     var result = {
         folders: []
@@ -112,6 +112,7 @@ exports.downloadComponent = async function (componentID) {
     try {
         var response = await httpRequest.httpRequest(options);
         response = JSON.parse(response);
+       
         var url = new URL(response['@microsoft.graph.downloadUrl']);
 
         var options = {
@@ -131,6 +132,7 @@ exports.downloadComponent = async function (componentID) {
     } catch (error) {
         /* error = parseResponse(error);
         throw (parseError(error)); */
+        console.log(error);
         console.log('download Component connect reject');
         throw(error);
     }
@@ -156,7 +158,7 @@ exports.getComponent = async function (componentID) {
         response = JSON.parse(response);
         return(response);
     } catch (error) {
-      
+        console.log(error);
         console.log('Get Component connect reject');
         throw(error);
     }

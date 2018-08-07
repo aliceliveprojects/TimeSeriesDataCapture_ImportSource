@@ -7,8 +7,8 @@ exports.httpRequest = function (options) {
     return new Promise(function (resolve, reject) {
         options1 = options;
         var result = ''
+        console.log(options);
         var request = https.request(options, function (res) {
-
             res.on('data', function (chunk) {
                 result += chunk
             });
