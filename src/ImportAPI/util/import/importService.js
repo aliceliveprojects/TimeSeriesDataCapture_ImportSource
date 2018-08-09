@@ -177,7 +177,7 @@ async function getAlgorithm(algorithmID) {
         var response;
         if (algorithmID != undefined) {
             response = await databaseService.getAlgorithm(algorithmID);
-            if (response === undefined) {
+            if (response === undefined || response === 'default') {
                 response = await databaseService.getDefaultAlgorithm();
                 console.log(response);
             }
