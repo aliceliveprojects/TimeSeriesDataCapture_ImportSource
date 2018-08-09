@@ -117,7 +117,7 @@ async function downloadRemarks(result) {
         return annotations;
     }
 
-    return null;
+    return [];
 }
 
 async function downloadRemark(child) {
@@ -207,6 +207,7 @@ async function downloadProcess(result, algorithmID) {
         var data = await Promise.all([downloadTdata(result, algorithmID), downloadRemarks(result)]);
         var runData = data[0];
         var annotations = data[1];
+        
         for (var i = 0, n = annotations.length; i < n; i++) {
             var id = uuidv4();
             var annotation = new document.Annotation(annotations[i][0], annotations[i][1]);
@@ -227,6 +228,7 @@ async function downloadProcess(result, algorithmID) {
 exports.getComponent = async function (componentID, algorithmID) {
     try {
         let result = await oneDriveService.getComponent(componentID);
+        console.log(result);
         await downloadProcess(result, algorithmID);
         return (componentID);
     } catch (error) {
