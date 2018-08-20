@@ -120,12 +120,12 @@ var initialise = function () {
   // swaggerRouter configuration
   var options = {
     swaggerUi: '/swagger.json',
-    controllers: './controllers',
+    controllers: __dirname + '/controllers',
     useStubs: process.env.NODE_ENV === 'development' ? true : false // Conditionally turn on stubs (mock mode)
   };
 
   // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
-  var spec = fs.readFileSync('./api/swagger.yaml', 'utf8');
+  var spec = fs.readFileSync(__dirname + '/api/swagger.yaml', 'utf8');
   var swaggerDoc = jsyaml.safeLoad(spec);
   var consumerApiPort = swaggerDoc.host.split(':')[1];  //WILL THROW IF PORT NOT DEFINED IN DOC
   var consumerApiScheme = swaggerDoc.schemes[0];  //WILL THROW IF SCHEMES NOT DEFINED IN DOC
