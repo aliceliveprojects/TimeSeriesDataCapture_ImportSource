@@ -167,7 +167,7 @@ var initialise = function () {
 
     // Serve the Swagger documents and Swagger UI
     app.use(middleware.swaggerUi(
-       {swaggerUiDir: path.join(__dirname, './import/swagger-ui-v2')}
+       {swaggerUiDir: path.join(__dirname, '/import/swagger-ui-v2')}
     ));
 
     // Start the server
