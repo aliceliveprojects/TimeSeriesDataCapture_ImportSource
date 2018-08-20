@@ -7,7 +7,7 @@ info:
   contact:
     name: "TimeSeriesDataCapture@gmail.com"
     email: "TimeSeriesDataCapture@gmail.com"
-host: "timeseriesdatacapture-import.herokuapp.com:443"
+host: "timeseriesdatacapture-browse.herokuapp.com:443"
 basePath: "/apis"
 tags:
 - name: "ImportAPI"
