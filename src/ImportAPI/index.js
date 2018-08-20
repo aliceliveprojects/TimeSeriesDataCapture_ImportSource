@@ -61,7 +61,7 @@ var getAuthClientConfig = function(){
 var writeAuthClientConfig = function (config){
   var authenticationClientConfig = config;
   var authenticationClientContent = "var auth_config = " + JSON.stringify(authenticationClientConfig);
-  fs.writeFileSync('./import/swagger-ui-v2/authproviderconfig.js', authenticationClientContent);
+  fs.writeFileSync(__dirname + '/import/swagger-ui-v2/authproviderconfig.js', authenticationClientContent);
 }
 
 
