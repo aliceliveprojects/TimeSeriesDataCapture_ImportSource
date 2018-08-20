@@ -3,10 +3,9 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = process.env.DATABASE_URL;
 var username = process.env.DATABASE_USERNAME;
-var password = prcoess.env.DATABASE_PASSWORD;
-var databaseName = prcoess.env.DATABASE_NAME;
+var password = process.env.DATABASE_PASSWORD;
+var databaseName = process.env.DATABASE_NAME;
 
-mongodb://<dbuser>:<dbpassword>@ds225442.mlab.com:25442/heroku_z6lwh5bd
 var url = 'mongodb://'+username+':'+password+'@'+url+'/'+databaseName;
 
 var dbo;
