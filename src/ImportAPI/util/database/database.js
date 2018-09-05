@@ -39,8 +39,8 @@ module.exports = {
         return service.updateFileStorageAuthentication(authentication);
     },
 
-    getFileStorageAuthentication: function(profileId){
-        return service.getFileStorageAuthentication(profileId);
+    getFileStorageAuthentication: function(){
+        return service.getFileStorageAuthentication();
     },
 
     deleteFileStorageAuthentication: function(profileId){

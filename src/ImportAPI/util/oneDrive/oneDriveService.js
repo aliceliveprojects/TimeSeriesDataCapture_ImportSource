@@ -2,6 +2,7 @@
 
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
+const databaseService = require('../database/database');
 var oneDriveToken = process.env.ONEDRIVETOKEN;
 function parseComponentIds(data) {
     var result = {
@@ -26,6 +27,7 @@ function parseComponentIds(data) {
 exports.getComponentIDs = async function (folderID) {
     var select = encodeURI('select=id,name,folder');
     var path = '/v1.0/me/drive/root/children?' + select;
+    var fileStorageToken = (await databaseService.getFileStorageAuthentication())[0].storageToken;
 
     if (folderID !== undefined) {
         path = '/v1.0/me/drive/items/' + encodeURI(folderID) + '/children?' + select;
@@ -38,7 +40,7 @@ exports.getComponentIDs = async function (folderID) {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'bearer ' + oneDriveToken
+            'Authorization': 'bearer ' + fileStorageToken
         },
         timeout: 4000
     };
@@ -59,13 +61,14 @@ exports.getComponentIDs = async function (folderID) {
 
 //example 2B497C4DAFF48A9C!105
 exports.downloadComponent = async function (componentID) {
+    var fileStorageToken =  (await databaseService.getFileStorageAuthentication())[0].storageToken;
     var options = {
         protocol: 'https:',
         host: 'graph.microsoft.com',
         path: '/v1.0/me/drive/items/' + encodeURI(componentID),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'bearer ' + oneDriveToken
+            'Authorization': 'bearer ' + fileStorageToken
         },
         timeout: 4000
     };
@@ -83,7 +86,7 @@ exports.downloadComponent = async function (componentID) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer ' + oneDriveToken
+                'Authorization': 'bearer ' +fileStorageToken
             }
         };
 
@@ -103,13 +106,14 @@ exports.downloadComponent = async function (componentID) {
 
 
 exports.getComponent = async function (componentID) {
+    var fileStorageToken =  (await databaseService.getFileStorageAuthentication())[0].storageToken
     var options = {
         protocol: 'https:',
         host: 'graph.microsoft.com',
         path: '/v1.0/me/drive/items/' + encodeURI(componentID) + '?expand=children(select=id,name)',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'bearer ' + oneDriveToken
+            'Authorization': 'bearer ' + fileStorageToken
         },
         timeout: 4000
     };

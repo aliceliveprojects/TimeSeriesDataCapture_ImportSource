@@ -12,7 +12,10 @@
             "program": "${workspaceRoot}/index.js",
             "env": {
                 "DEBUG":"*",
-                "DATABASE_URL":"postgres://YusofBandar@localhost/yusofbandar",
+                "DATABASE_URL":"ds225442.mlab.com:25442",
+                "DATABASE_USERNAME":"timeseriesdatacapture",
+                "DATABASE_PASSWORD":"Time1973628capture182912",
+                "DATABASE_NAME":"heroku_z6lwh5bd",
                 "WEB_CONCURRENCY":"4",
                 "PORT": "8001",
                 "DB_NEEDS_SSL":"false",
@@ -29,3 +32,4 @@
     ]
 
 }
+

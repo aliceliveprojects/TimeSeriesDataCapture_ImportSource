@@ -120,12 +120,9 @@ exports.updateFileStorageAuthentication = async function updateFileStorageAuthen
     }
 }
 
-exports.getFileStorageAuthentication = async function getFileStorageAuthentication(profileID) {
+exports.getFileStorageAuthentication = async function getFileStorageAuthentication() {
     try {
-        var query = {
-            profileID: profileID
-        }
-        return (await service.mongodbQuery('authenticationCollection', query));
+        return (await service.mongodbQuery('authenticationCollection',{}));
     } catch (error) {
 
     }
