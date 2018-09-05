@@ -3,7 +3,7 @@
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
 const databaseService = require('../database/database');
-var oneDriveToken = process.env.ONEDRIVETOKEN;
+
 function parseComponentIds(data) {
     var result = {
         folders: []
