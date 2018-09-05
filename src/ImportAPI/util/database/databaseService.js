@@ -1,12 +1,13 @@
 'use strict';
 
 var MongoClient = require('mongodb').MongoClient;
-var url = process.env.DATABASE_URL;
-var username = process.env.DATABASE_USERNAME;
-var password = process.env.DATABASE_PASSWORD;
+var databaseurl = process.env.DATABASE_URL;
+var databaseusername = process.env.DATABASE_USERNAME;
+var databasepassword = process.env.DATABASE_PASSWORD;
 var databaseName = process.env.DATABASE_NAME;
 
-var url = 'mongodb://'+username+':'+password+'@'+url+'/'+databaseName;
+var url = 'mongodb://'+databaseusername+':'+databasepassword+'@'+databaseurl+'/'+databaseName;
+
 
 var dbo;
 
@@ -17,7 +18,7 @@ function connect() {
         if (dbo == null) {
             MongoClient.connect(url, { useNewUrlParser: true }, (error, db) => {
                 if (error) reject(error);
-                dbo = db.db(databaseName);
+                dbo = db.db("heroku_z6lwh5bd");
                 resolve();
             });
         } else {
@@ -42,7 +43,11 @@ exports.mongodbInsert = function mongodbInsert(collection, object) {
     });
 }
 
+
+
 exports.mongodbUpdate = function mongodbUpdate(collection, query, updatedObject) {
+    
+
     return new Promise((resolve, reject) => {
         connect()
             .then(function (result) {
@@ -56,23 +61,17 @@ exports.mongodbUpdate = function mongodbUpdate(collection, query, updatedObject)
 
 
 
-exports.mongodbQuery = function mongodbQuery(collection, query, filter, columns) {
+exports.mongodbQuery = function mongodbQuery(collection, query, select) {
     return new Promise((resolve, reject) => {
         connect()
             .then(function (result) {
 
-                var filterObject = {};
-                if (filter != undefined) {
-                    filterObject = parseFilter(filter);
-                }
-                var columnObject = {};
-                if (columns != undefined) {
-                    columnObject = parseColumns(columns);
+                if(select != undefined){
+                    var selectObject = parseSelect(select);
                 }
 
-                dbo.collection(collection).find(query, columnObject).project(filterObject).toArray((error, result) => {
+                dbo.collection(collection).find(query).project(selectObject).toArray((error, result) => {
                     if (error) reject(error);
-
                     resolve(result);
                 });
             })
@@ -80,21 +79,20 @@ exports.mongodbQuery = function mongodbQuery(collection, query, filter, columns)
 
 }
 
-exports.mongodbFindAll = function mongodbFindAll(collection, filter, columns) {
+exports.mongodbFindAll = function mongodbFindAll(collection,select) {
     return new Promise((resolve, reject) => {
         connect()
             .then(result => {
-                var filterObject = {};
-                if (filter != undefined) {
-                    filterObject = parseFilter(filter);
+                if(select != undefined){
+                    var selectObject = parseSelect(select);
                 }
-                var columnObject = {};
-                if (columns != undefined) {
-                    columnObject = parseColumns(columns);
-                }
+                
 
-                dbo.collection(collection).find({},columnObject).project(filterObject).toArray((error, result) => {
-                    if (error) reject(error);
+                dbo.collection(collection).find({}).project(selectObject).toArray((error, result) => {
+                    if(error){
+                        console.log(error);
+                        reject(error);
+                    }
                     resolve(result);
                 })
             })
@@ -113,23 +111,26 @@ exports.mongodbDelete = function mongodbDelete(collection, object) {
     });
 }
 
-function parseFilter(filterArray) {
-
-    var filterObject = {};
-
-    for (var i = 0, n = filter.length; i < n; i++) {
-        filterObject[filter[i]] = 1;
-    }
-
-    return filterObject;
+exports.mongodbRemove = function mongodbRemove(collection,object){
+    return new Promise((resolve, reject) => {
+        connect()
+            .then(function (result) {
+                dbo.collection(collection).remove(object, (error, result) => {
+                    if (error) reject(error);
+                    resolve('object deleted');
+                })
+            })
+    });
 }
 
-function parseColumns(columnArray) {
-    var columnObject = {};
-    for (var i = 0, n = columns.length; i < n; i++) {
-        columnObject[columns[i]] = 1;
+
+function parseSelect(selectArray){
+    var selectObject = {};
+    for(var i=0,n=selectArray.length;i<n;i++){
+        selectObject[selectArray[i]] = true;
     }
-    return columnObject;
+
+    return selectObject;
 }
 
 /* exports.mongodbFind = function mongodbFind(collection, query, filter){

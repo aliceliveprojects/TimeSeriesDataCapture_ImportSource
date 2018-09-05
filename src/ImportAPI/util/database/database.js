@@ -3,8 +3,8 @@
 var service = require('./databaseServiceWrapper');
 
 module.exports = {
-    insertRun: function (run) {
-        return service.insertRun(run);
+    createRun: function (run) {
+        return service.createRun(run);
     },
 
     updateRuns: function (query, updateRun) {
@@ -15,28 +15,64 @@ module.exports = {
         return service.deleteRun(run);
     },
 
-    queryRun: function (query, filter) {
-        return service.queryRun(query,filter);
+    queryRun: function (query) {
+        return service.queryRun(query);
     },
 
-    getAuthentication: function(profileID, filter){
-        return service.getAuthentication(profileID,filter);
+    getRun: function (runId){
+        return service.getRun(runId);
     },
 
-    setAuthentication: function(authentication){
-        return service.setAuthentication(authentication);
+    filterIds: function(runIds){
+        return service.filterIds(runIds);
     },
 
-    getTag: function(tag,filter){
-        return service.getTag(tag,filter);
+    getAuthentication: function(profileId){
+        return service.getAuthentication(profileId);
     },
 
-    addTag: function(tag){
-        return service.addTag(tag,filter);
+    createFileStorageAuthentication: function(authentication){
+        return service.createFileStorageAuthentication(authentication);
     },
 
-    insertAlgorithm: function (algorithm) {
-        return service.insertAlgorithm(algorithm);
+    updateFileStorageAuthentication: function(authentication){
+        return service.updateFileStorageAuthentication(authentication);
+    },
+
+    getFileStorageAuthentication: function(profileId){
+        return service.getFileStorageAuthentication(profileId);
+    },
+
+    deleteFileStorageAuthentication: function(profileId){
+        return service.deleteFileStorageAuthentication(profileId);
+    },
+
+    getTag: function(tag){
+        return service.getTag(tag);
+    },
+
+    getTagById: function(tagId){
+        return service.getTagById(tagId);
+    },
+
+    queryTag : function(tag){
+        return service.queryTag(tag);
+    },
+
+    createTag: function(tag){
+        return service.createTag(tag);
+    },
+
+    deleteTagById : function(componentId,tagId){
+        return service.deleteTagbyId(componentId,tagId);
+    },
+
+    deleteAnnotation: function(componentId,annotationId){
+        return service.deleteAnnotation(componentId,annotationId);
+    },
+
+    createAlgorithm: function (algorithm) {
+        return service.createAlgorithm(algorithm);
     },
 
     getAllAlgorithms: function(){

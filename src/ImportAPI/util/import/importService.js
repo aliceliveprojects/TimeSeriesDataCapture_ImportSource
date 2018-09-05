@@ -216,7 +216,7 @@ async function downloadProcess(result, algorithmID) {
 
         runData = new document.Component(result.id, dateTimeStamp[0], dateTimeStamp[1], runData, annotationObject);
         console.log(runData);
-        var databaseResult = await databaseService.insertRun(runData);
+        var databaseResult = await databaseService.createRun(runData);
         console.log(databaseResult);
     } catch (error) {
         throw (error);

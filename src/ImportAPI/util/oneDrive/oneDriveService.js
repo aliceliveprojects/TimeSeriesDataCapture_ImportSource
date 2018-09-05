@@ -22,45 +22,6 @@ function parseComponentIds(data) {
     return result;
 }
 
-function parseResponse(result) {
-    result = JSON.parse(result);
-
-    var response = null;
-    var responseCode = null;
-
-    if (result.hasOwnProperty('result')) {
-        response = result.result;
-    }
-
-    if (result.hasOwnProperty('statusCode')) {
-        responseCode = result.statusCode;
-    }
-
-    return [responseCode, response];
-}
-
-
-function parseError(error) {
-    var errorResponse = 'Error';
-    var errorCode = 500;
-
-    if (error != null)
-        errorCode = error[0]
-
-    if (error[1] != null) {
-        try {
-            errorResponse = JSON.parse(error[1]);
-            errorResponse = errorResponse.error.code;
-        } catch (error) {
-            errorResponse = error[1];
-        }
-       
-    }
-
-    throw(error);
-
-}
-
 
 exports.getComponentIDs = async function (folderID) {
     var select = encodeURI('select=id,name,folder');
