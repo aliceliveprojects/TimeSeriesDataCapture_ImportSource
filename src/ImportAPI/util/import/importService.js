@@ -196,7 +196,7 @@ async function getAlgorithm(algorithmID) {
 
 async function downloadProcess(result, algorithmID) {
 
-    console.log('importService line 199 STARTING DOWNLOAD')
+   
 
 
     try {
@@ -205,11 +205,11 @@ async function downloadProcess(result, algorithmID) {
 
         }
 
-        console.log('importService line 208 DATEANDTIME ' + dateTimeStamp);
+      
         var data = await Promise.all([downloadTdata(result, algorithmID), downloadRemarks(result)]);
         var runData = data[0];
 
-        console.log('importService line 212 DATA ' + runData)
+       
         var annotations = data[1];
         
         for (var i = 0, n = annotations.length; i < n; i++) {
@@ -233,7 +233,7 @@ async function downloadProcess(result, algorithmID) {
 exports.getComponent = async function (componentID, algorithmID) {
     try {
         let result = await oneDriveService.getComponent(componentID);
-        console.log('importservice line 231 RETRIEVED ' +  componentID);
+     
         await downloadProcess(result, algorithmID);
         return (componentID);
     } catch (error) {

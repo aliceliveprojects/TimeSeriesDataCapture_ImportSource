@@ -7,7 +7,7 @@ exports.httpRequest = function (options) {
     return new Promise(function (resolve, reject) {
         options1 = options;
         var result = ''
-        console.log('httpReqest line 10 REQUESTING' + options.path);
+       
         var request = https.request(options, function (res) {
             res.on('data', function (chunk) {
                 result += chunk
@@ -18,11 +18,11 @@ exports.httpRequest = function (options) {
         
                 console.log(res.statusCode);
                 if(res.statusCode >= 100 && res.statusCode < 400){
-                    console.log('httpRequest line 21 https success')
+                    c
                     resolve(result);
                 }else{
                     var error;
-                    console.log('httpsRequest line25 https fail');
+                 
                     if(res.statusCode === 400){
                         error = errorApi.create400Error('Bad Request');
                     }else if(res.statusCode === 401){
