@@ -228,7 +228,7 @@ async function downloadProcess(result, algorithmID) {
 exports.getComponent = async function (componentID, algorithmID) {
     try {
         let result = await oneDriveService.getComponent(componentID);
-        console.log(result);
+        console.log('importservice line 231 RETRIEVED ' +  componentID);
         await downloadProcess(result, algorithmID);
         return (componentID);
     } catch (error) {
