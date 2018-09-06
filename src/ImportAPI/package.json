@@ -39,6 +39,7 @@
     "sleep": "^5.1.1",
     "swagger-tools": "0.10.1",
     "throng": "4.0.0",
+    "url-parse": "^1.4.3",
     "uuid": "^3.3.2",
     "xmlhttprequest": "^1.8.0",
     "zip-folder": "^1.0.0"

@@ -3,6 +3,7 @@
 const errorApi = require('../error/error');
 const httpRequest = require('../http/httpRequest');
 const databaseService = require('../database/database');
+const URL = require('url-parse');
 
 function parseComponentIds(data) {
     var result = {
@@ -98,7 +99,7 @@ exports.downloadComponent = async function (componentID) {
         var response = await httpRequest.httpRequest(options);
         response = JSON.parse(response);
         console.log('RESPONSE LINE 100',response);
-        var url = url.parse(response['@microsoft.graph.downloadUrl']);
+        var url = new URL(response['@microsoft.graph.downloadUrl']);
 
         var options = {
             protocol: 'https:',
