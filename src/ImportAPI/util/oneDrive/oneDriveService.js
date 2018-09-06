@@ -98,7 +98,7 @@ exports.downloadComponent = async function (componentID) {
         var response = await httpRequest.httpRequest(options);
         response = JSON.parse(response);
         console.log('RESPONSE LINE 100',response);
-        var url = new url.parse(response['@microsoft.graph.downloadUrl']);
+        var url = url.parse(response['@microsoft.graph.downloadUrl']);
 
         var options = {
             protocol: 'https:',
