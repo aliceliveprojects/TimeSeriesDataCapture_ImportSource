@@ -27,7 +27,17 @@ function parseComponentIds(data) {
 exports.getComponentIDs = async function (folderID) {
     var select = encodeURI('select=id,name,folder');
     var path = '/v1.0/me/drive/root/children?' + select;
-    var fileStorageToken = (await databaseService.getFileStorageAuthentication())[0].storageToken;
+    var fileStorageToken = (await databaseService.getFileStorageAuthentication())
+
+    if(fileStorageToken.length < 1){
+        throw({
+            "stack": null,
+            "message": "Authorization failed: Un-authorized",
+            "statusCode": 401
+        })
+    }
+
+    fileStorageToken = fileStorageToken[0].storageToken;
 
     if (folderID !== undefined) {
         path = '/v1.0/me/drive/items/' + encodeURI(folderID) + '/children?' + select;
@@ -61,7 +71,18 @@ exports.getComponentIDs = async function (folderID) {
 
 //example 2B497C4DAFF48A9C!105
 exports.downloadComponent = async function (componentID) {
-    var fileStorageToken =  (await databaseService.getFileStorageAuthentication())[0].storageToken;
+    var fileStorageToken = (await databaseService.getFileStorageAuthentication())
+
+    if(fileStorageToken.length < 1){
+        throw({
+            "stack": null,
+            "message": "Authorization failed: Un-authorized",
+            "statusCode": 401
+        })
+    }
+
+    fileStorageToken = fileStorageToken[0].storageToken;
+
     var options = {
         protocol: 'https:',
         host: 'graph.microsoft.com',
@@ -106,7 +127,18 @@ exports.downloadComponent = async function (componentID) {
 
 
 exports.getComponent = async function (componentID) {
-    var fileStorageToken =  (await databaseService.getFileStorageAuthentication())[0].storageToken
+    var fileStorageToken = (await databaseService.getFileStorageAuthentication())
+
+    if(fileStorageToken.length < 1){
+        throw({
+            "stack": null,
+            "message": "Authorization failed: Un-authorized",
+            "statusCode": 401
+        })
+    }
+
+    fileStorageToken = fileStorageToken[0].storageToken;
+
     var options = {
         protocol: 'https:',
         host: 'graph.microsoft.com',
