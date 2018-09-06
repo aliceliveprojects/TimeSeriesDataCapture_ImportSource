@@ -223,6 +223,7 @@ async function downloadProcess(result, algorithmID) {
         var databaseResult = await databaseService.createRun(runData);
         console.log(databaseResult);
     } catch (error) {
+        console.log('ERROR' + error)
         throw (error);
     }
 }
