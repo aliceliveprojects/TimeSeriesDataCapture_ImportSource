@@ -196,6 +196,7 @@ async function getAlgorithm(algorithmID) {
 
 async function downloadProcess(result, algorithmID) {
 
+    console.log('importService line 199 STARTING DOWNLOAD')
 
 
     try {
@@ -204,8 +205,11 @@ async function downloadProcess(result, algorithmID) {
 
         }
 
+        console.log('importService line 208 DATEANDTIME ' + dateTimeStamp);
         var data = await Promise.all([downloadTdata(result, algorithmID), downloadRemarks(result)]);
         var runData = data[0];
+
+        console.log('importService line 212 DATA ' + runData)
         var annotations = data[1];
         
         for (var i = 0, n = annotations.length; i < n; i++) {
