@@ -5,7 +5,7 @@ var https = require('https');
 var options1;
 exports.httpRequest = function (options) {
     return new Promise(function (resolve, reject) {
-        options1 = options;
+       
         var result = ''
        
         var request = https.request(options, function (res) {
@@ -18,7 +18,7 @@ exports.httpRequest = function (options) {
         
                 console.log(res.statusCode);
                 if(res.statusCode >= 100 && res.statusCode < 400){
-                    c
+                    
                     resolve(result);
                 }else{
                     var error;
@@ -44,10 +44,7 @@ exports.httpRequest = function (options) {
             reject(errorApi.create500Error(error));
         });
 
-        request.on('timeout', function(error){
-            console.log(error);
-            httpRequest(options1);
-        })
+       
 
         request.end();
     });

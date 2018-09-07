@@ -156,7 +156,7 @@ async function RthCalculation(algorithmID, data) {
         for (var i = 0, n = data['Time'].length; i < n; i++) {
             var T1 = data[params[0]][i];
             var T2 = data[params[1]][i];
-            var DAC = data[params[1]][i];
+            var DAC = data[params[2]][i];
 
             var RTH = algorithmFn(T1, T2, DAC);
 
