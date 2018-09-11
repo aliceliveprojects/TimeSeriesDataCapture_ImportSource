@@ -24,10 +24,10 @@ function parseComponentIds(data) {
     return result;
 }
 
-
+//01EUZ4RDYPBEBDXSTD75EIHMJOFPLHW3CH
 exports.getComponentIDs = async function (folderID) {
-    var select = encodeURI('select=id,name,folder');
-    var path = '/v1.0/me/drive/root/children?' + select;
+    //var select = encodeURI('select=id,name,folder');
+    var path = '/v1.0/me/drive/root/children';
     var fileStorageToken = (await databaseService.getFileStorageAuthentication())
 
     if(fileStorageToken.length < 1){
@@ -41,7 +41,7 @@ exports.getComponentIDs = async function (folderID) {
     fileStorageToken = fileStorageToken[0].storageToken;
 
     if (folderID !== undefined) {
-        path = '/v1.0/me/drive/items/' + encodeURI(folderID) + '/children?' + select;
+        path = '/v1.0/me/drive/items/' + encodeURI(folderID) + '/children';
     }
 
     var options = {
@@ -77,7 +77,7 @@ exports.downloadComponent = async function (componentID) {
     if(fileStorageToken.length < 1){
         throw({
             "stack": null,
-            "message": "Authorization failed: Un-authorized",
+            "message": "Authorization failed: un-authorized",
             "statusCode": 401
         })
     }
@@ -87,7 +87,7 @@ exports.downloadComponent = async function (componentID) {
     var options = {
         protocol: 'https:',
         host: 'graph.microsoft.com',
-        path: '/v1.0/me/drive/items/' + encodeURI(componentID),
+        path: '/v1.0/me/drive/items/' + encodeURI(componentID)+'/content',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'bearer ' + fileStorageToken
@@ -97,22 +97,7 @@ exports.downloadComponent = async function (componentID) {
 
     try {
         var response = await httpRequest.httpRequest(options);
-        response = JSON.parse(response);
-       
-        var url = new URL(response['@microsoft.graph.downloadUrl']);
 
-        var options = {
-            protocol: 'https:',
-            host: url.hostname,
-            path: url.pathname,
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'bearer ' +fileStorageToken
-            }
-        };
-
-        response = await httpRequest.httpRequest(options);
         console.log('download Component connect success');
         return(response);
     } catch (error) {

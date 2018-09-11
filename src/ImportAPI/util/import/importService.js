@@ -261,7 +261,7 @@ exports.getComponentPreview = async function (componentID) {
         return null
 
     } catch (error) {
-        
+        throw(error);
     }
 }
 

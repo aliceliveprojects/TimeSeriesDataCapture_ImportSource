@@ -1,7 +1,7 @@
 'use strict'
 const errorApi = require('../error/error');
 
-var https = require('https');
+var https = require('follow-redirects').https;
 var options1;
 exports.httpRequest = function (options) {
     return new Promise(function (resolve, reject) {
