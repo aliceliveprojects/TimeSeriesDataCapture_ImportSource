@@ -26,6 +26,13 @@ To start server run:
 node index.js
 ```
 
+## Environment Variables 
+
+### Database
+*Database URL*, *Database Username*, *Database Password* and *Database Name* can be all found within the mLab dashboard
+
+*For help see [MongoDB](https://github.com/CMDT/TimeSeriesDataCapture#mongodb-hosting)*
+
 
 | Variable             | Example                                  | Description                              |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
