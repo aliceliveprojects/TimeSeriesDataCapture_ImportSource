@@ -40,7 +40,7 @@ const STATUS = {
   PROGRESSING: "PROGRESSING",
   EXPORTED: "EXPORTED"
 }
-const zipExtension = ".7z"
+const zipExtension = ".zip"
 
 exports.reserveExport = function(secret) {
   let isValidSecret = checkSecretValidity(secret)
