@@ -32,39 +32,6 @@ var getAsBoolean = function(key){
 }
 
 
-
-
-
-var getAuthClientConfig = function(){
-  var result = {};
-
-    
-    if(!process.env.AUTH_CLIENT_ID) throw new Error("undefined in environment: AUTH_CLIENT_ID");
-    if(!process.env.AUTH_APP_NAME) throw new Error("undefined in environment: AUTH_APP_NAME");
-    if(!process.env.AUTH_AUDIENCE) throw new Error("undefined in environment: AUTH_AUDIENCE");
-
-    
-    result.clientId = process.env.AUTH_CLIENT_ID;
-    result.appName = process.env.AUTH_APP_NAME;
-    result.clientSecret = "your-client-secret-if-required";
-    result.realm =  "your-realms";
-    result.scopeSeparator =  " ";
-    result.additionalQueryStringParams = {};
-    result.additionalQueryStringParams.audience = process.env.AUTH_AUDIENCE;
-    //result.additionalQueryStringParams.response_type = "token";
-    result.additionalQueryStringParams.nonce = "123456";
-
-  return result;
-}
-
-
-var writeAuthClientConfig = function (config){
-  var authenticationClientConfig = config;
-  var authenticationClientContent = "var auth_config = " + JSON.stringify(authenticationClientConfig);
-  fs.writeFileSync(__dirname + '/import/swagger-ui-v2/authproviderconfig.js', authenticationClientContent);
-}
-
-
 var initialiseWithClustering = function () {
 
   var throng = require('throng');
@@ -82,20 +49,6 @@ var initialiseWithClustering = function () {
 
 var initialise = function () {
 
-  if(!process.env.AUTH_URL) throw new Error("undefined in environment: AUTH_URL");
-  var authUrl = process.env.AUTH_URL;
-
-  if(!process.env.DATABASE_URL) throw new Error("undefined in environment: DATABASE_URL");
-  var dbUrl = process.env.DATABASE_URL;
-  var dbNeedsSSL = getAsBoolean("DB_NEEDS_SSL");
-
-
-  if(!process.env.RSA_URI) throw new Error("undefined in environment: RSA_URI");
-  var rsaUri = process.env.RSA_URI;
-
-  if(!process.env.CONSUMER_SECRET) throw new Error("undefined in environment: CONSUMER_SECRET");
-  var consumerSecret = process.env.CONSUMER_SECRET;
-
   if(!process.env.SYSTEM_EXTERNAL_ID) throw new Error("undefined in environment: SYSTEM_EXTERNAL_ID");
   var systemId = process.env.SYSTEM_EXTERNAL_ID;
 
@@ -104,8 +57,6 @@ var initialise = function () {
   var serverPort = process.env.PORT || 8000;
 
   log("Node: " + process.version);
-  log("SSL: dbNeedsSSL?: " + dbNeedsSSL);
-
 
   var cors = require('cors');
   var app = require('connect')();
@@ -113,7 +64,6 @@ var initialise = function () {
   var path = require('path');
   var swaggerTools = require('swagger-tools');
   var jsyaml = require('js-yaml');
-  var database = require('./util/database/database');
   var data = require('./util/data/data');
   var auth = require('./util/authentication/authentication');
   
@@ -133,10 +83,7 @@ var initialise = function () {
   var consumerApiScheme = swaggerDoc.schemes[0];  //WILL THROW IF SCHEMES NOT DEFINED IN DOC
   
 
-  // initialise main components. We need some of this to change the swagger doc.
-  writeAuthClientConfig(getAuthClientConfig());
-  //database.initialise(dbUrl, dbNeedsSSL);
-  auth.initialise(rsaUri, consumerSecret);
+
   data.initialise(systemId, consumerApiScheme, consumerApiAddress, consumerApiPort);
 
 
@@ -144,11 +91,7 @@ var initialise = function () {
   var hostAddrPort = data.getConsumerApiAddress() + ":" + data.getConsumerApiPort(); 
   swaggerDoc.host = hostAddrPort;
 
-  var secDefs = swaggerDoc.securityDefinitions;
-  for (var secDef in secDefs) {
-      console.log("changing: " + secDefs[secDef].authorizationUrl + " : to : " + authUrl);
-      secDefs[secDef].authorizationUrl = authUrl;
-  }
+
 
   // Initialize the Swagger middleware
   swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {

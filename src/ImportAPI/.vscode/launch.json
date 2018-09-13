@@ -18,15 +18,8 @@
                 "DATABASE_NAME":"heroku_z6lwh5bd",
                 "WEB_CONCURRENCY":"4",
                 "PORT": "8001",
-                "DB_NEEDS_SSL":"false",
                 "DISABLE_CLUSTERING" :"true",
-                "RSA_URI":"https://timeseriestest.eu.auth0.com/.well-known/jwks.json",
-                "CONSUMER_SECRET": "I'll be glad when this is over.",
                 "SYSTEM_EXTERNAL_ID": "SYSTEM|fbb69ea1-56ee-476d-be87-3360453bc7b5",
-                "AUTH_CLIENT_ID" : "0XLhzBnfbBmbmKU6OnEan4CU5lLWkD81",
-                "AUTH_APP_NAME" : "TimeSeriesDataCapture",
-                "AUTH_AUDIENCE" : "https://www.TimeSeriesData.org/user",
-                "AUTH_URL" : "https://timeseriestest.eu.auth0.com/authorize"
             } 
         }
     ]
