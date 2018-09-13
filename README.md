@@ -43,7 +43,6 @@ node index.js
 | DEBUG                | `*`                                      | Node debugging. Defines what components produce logging. Usually set to `*` |
 | DISABLE_CLUSTERING   | true                                     | set to false to enable running on multiple cores. Currently set to true, because it's not yet tested. |
 | PORT                 | 443                                      | Notionally, this variable is set to 443, but it simply exists as a placeholder for heroku. |
-| SYSTEM_EXTERNAL_ID   | SYSTEM                                   | fbb69ea1-56ee-476d-be87-3360453bc7b5     |
 | WEB_CONCURRENCY      | 4                                        | Number of cores to use.                  |
 
 
