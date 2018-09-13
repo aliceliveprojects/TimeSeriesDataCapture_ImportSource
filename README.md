@@ -42,7 +42,7 @@ node index.js
 | DATABASE_NAME        | *DATABASE NAME*                          | this is the database name|
 | DEBUG                | `*`                                      | Node debugging. Defines what components produce logging. Usually set to `*` |
 | DISABLE_CLUSTERING   | true                                     | set to false to enable running on multiple cores. Currently set to true, because it's not yet tested. |
-| PORT                 | 443                                      | Notionally, this variable is set to 443, but it simply exists as a placeholder for heroku. |
+| PORT                 | 443                                      | Notionally, this variable is set to 443, but it simply exists as a placeholder for heroku. When running locally use port 8001 |
 | WEB_CONCURRENCY      | 4                                        | Number of cores to use.                  |
 
 
