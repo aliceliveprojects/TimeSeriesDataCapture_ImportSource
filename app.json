@@ -1,0 +1,6 @@
+{
+  "name": "TimeSeriesDataCapture_ImportSource",
+  "description": "The Import API for the time series data capture project",
+  "repository": "https://github.com/CMDT/TimeSeriesDataCapture_ImportSource",
+  "keywords": ["node", "angularjs", "Import"]
+}
