@@ -147,7 +147,9 @@ async function RthCalculation(algorithmID, data) {
 
     try {
         var response = await getAlgorithm(algorithmID);
-        console.log(response);
+        if(response === undefined){
+            return data;
+        }
         var params = response.parameters
 
 
