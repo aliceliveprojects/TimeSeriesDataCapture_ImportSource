@@ -18,7 +18,7 @@ function connect() {
         if (dbo == null) {
             MongoClient.connect(url, { useNewUrlParser: true }, (error, db) => {
                 if (error) reject(error);
-                dbo = db.db("heroku_z6lwh5bd");
+                dbo = db.db(databaseName);
                 resolve();
             });
         } else {
