@@ -1,6 +1,6 @@
 'use strict';
 
-var utils = require('../util/writer.js');
+
 var ImportAPI = require('./ImportAPIService');
 
 

@@ -267,7 +267,6 @@ exports.getComponentPreview = async function (componentID) {
 
 exports.getComponentIDs = async function (folderID) {
 
-    console.log(folderID);
     try {
         let result = await oneDriveService.getComponentIDs(folderID);
         return (result);
