@@ -1,1 +1,1 @@
-var auth_config = {"clientId":"0XLhzBnfbBmbmKU6OnEan4CU5lLWkD81","appName":"TimeSeriesDataCapture","clientSecret":"your-client-secret-if-required","realm":"your-realms","scopeSeparator":" ","additionalQueryStringParams":{"audience":"https://www.TimeSeriesData.org/user","nonce":"123456"}}
+var auth_config = {"clientSecret":"your-client-secret-if-required","realm":"your-realms","scopeSeparator":" ","additionalQueryStringParams":{"nonce":"123456"}}
