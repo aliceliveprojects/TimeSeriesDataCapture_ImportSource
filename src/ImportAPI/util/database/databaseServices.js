@@ -1,12 +1,15 @@
 'use strict';
 
 var MongoClient = require('mongodb').MongoClient;
-var databaseurl = process.env.DATABASE_URL;
-var databaseusername = process.env.DATABASE_USERNAME;
-var databasepassword = process.env.DATABASE_PASSWORD;
+var databaseHostname = process.env.DATABASE_HOSTNAME;
+var databasePort = process.env.DATABASE_PORT;
+var databaseUsername = process.env.DATABASE_USERNAME;
+var databasePassword = process.env.DATABASE_PASSWORD;
 var databaseName = process.env.DATABASE_NAME;
 
-var url = 'mongodb://'+databaseusername+':'+databasepassword+'@'+databaseurl+'/'+databaseName;
+// url = 'mongodb://'+databaseusername+':'+databasepassword+'@'+databaseurl+'/'+databaseName;
+
+var url = `mongodb://${databaseUsername}:${databasePassword}@${databaseHostname}:${databasePort}/${databaseName}`;
 
 
 var dbo;
