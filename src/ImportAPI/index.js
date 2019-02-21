@@ -15,8 +15,8 @@ log("ENVIRONMENT: **********************");
 log(process.env);
 log("**********************");
 
-
-if (!process.env.DATABASE_URL) throw new Error("undefined in environment: DATABASE_URL");
+if (!process.env.DATABASE_HOSTNAME) throw new Error("undefined in environment: DATABASE_HOSTNAME");
+if (!process.env.DATABASE_PORT) throw new Error("undefined in environment: DATABASE_PORT");
 if (!process.env.DATABASE_USERNAME) throw new Error("undefined in environment: DATABASE_USERNAME");
 if (!process.env.DATABASE_PASSWORD) throw new Error("undefined in environment: DATABASE_PASSWORD");
 if( !process.env.DATABASE_NAME) throw new Error("undefined in environment: DATABASE_NAME");
