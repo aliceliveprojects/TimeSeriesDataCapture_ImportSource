@@ -3,12 +3,13 @@ Implementation of the ImportSource interface, described in TimeSeriesDataCapture
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-## Building
+# Building
 
-### Prerequisites
+## Prerequisites
 
-#### MongoDB Database
-see [MongoDB Hosting](https://github.com/CMDT/TimeSeriesDataCapture#mongodb-hosting) and [MongoDB Creation](https://github.com/CMDT/TimeSeriesDataCapture#mongodb-creation)
+- [MongoDB Database](https://github.com/CMDT/TimeSeriesDataCapture#mongodb-hosting) and [MongoDB Creation](https://github.com/CMDT/TimeSeriesDataCapture#mongodb-creation)
+
+## Deployment
 
 ### Heroku
 To build the Import API on heroku simply click the Deploy To Heroku button above
@@ -36,15 +37,17 @@ node index.js
 
 | Variable             | Example                                  | Description                              |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| DATABASE_URL         | *DATABASE URL*                           | this is the access url for the  MongoDB database. |
-| DATABASE_USERNAME    | *DATABASE USERNAME*                      | this is the username for the  MongoDB database. |
-| DATABASE_PASSWORD    | *DATABASE PASSWORD*                      | this is the password for the  MongoDB database. |
-| DATABASE_NAME        | *DATABASE NAME*                          | this is the database name|
-| DEBUG                | `*`                                      | Node debugging. Defines what components produce logging. Usually set to `*` |
-| DISABLE_CLUSTERING   | true                                     | set to false to enable running on multiple cores. Currently set to true, because it's not yet tested. |
-| PORT                 | 443                                      | Notionally, this variable is set to 443, but it simply exists as a placeholder for heroku. When running locally use port 8001 |
-| WEB_CONCURRENCY      | 4                                        | Number of cores to use.                  |
+| DEBUG | * | Node debugging. Defines what components produce logging. Usually set to *|                                    
+| PORT  |443 | Notionally, this variable is set to 443, but it simply    exists as a placeholder for heroku. When running locally use 8000|
+|DATABASE_HOSTNAME|*DATABASE HOSTNAME*|MongoDB database hostname (ds34237452745.mlab.com)|
+|DATABASE_PORT|*DATABASE PORT*|MongoDB database port number|
+|DATABASE_NAME|*DATABASE NAME*|MongoDB database name|
+|DATABASE_USERNAME|*DATABASE USERNAME*|MongoDB database user username|
+|DATABASE_PASSWORD|*DATABASE PASSWORD*|MongoDB database user password|
+|DATA_FILE_NAME|*DATA FILE NAME*|File name which the time series data is located within (OPTIONAL)|
 
+**Database**
+*Database URL*, *Database Username*, *Database Password* and *Database Name* can be all found within the mLab dashboard
 
 ---
 
