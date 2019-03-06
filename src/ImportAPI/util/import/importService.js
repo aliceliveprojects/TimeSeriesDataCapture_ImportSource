@@ -259,7 +259,13 @@ exports.getComponentPreview = async function (componentID) {
         if (tDataId != null) {
             var tDataresult = await oneDriveService.getComponent(tDataId);
 
-            var tempLogID = extractId(tDataresult['children'], 'Temperature_Log.txt');
+            var filename = 'data.txt';
+
+            if(process.env.DATA_FILE_NAME){
+                filename = process.env.DATA_FILE_NAME;
+            }
+
+            var tempLogID = extractId(tDataresult['children'], filename);
             var runData = await oneDriveService.downloadComponent(tempLogID);
 
             runData = await parseRunData(runData);
