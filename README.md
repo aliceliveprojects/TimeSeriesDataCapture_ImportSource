@@ -45,6 +45,9 @@ node index.js
 |DATABASE_USERNAME|*DATABASE USERNAME*|MongoDB database user username|
 |DATABASE_PASSWORD|*DATABASE PASSWORD*|MongoDB database user password|
 |DATA_FILE_NAME|*DATA FILE NAME*|File name which the time series data is located within (OPTIONAL)|
+|API_SCHEME|*API SCHEME*|Scheme for api (either http or https)|
+|API_DOMAIN|*API DOMAIN*|Domain for api|
+|API_PORT|*API PORT*|Port for api|
 
 **Database**
 *Database URL*, *Database Username*, *Database Password* and *Database Name* can be all found within the mLab dashboard
