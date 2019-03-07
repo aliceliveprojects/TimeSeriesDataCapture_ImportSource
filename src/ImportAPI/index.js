@@ -48,6 +48,67 @@ var initialise = function () {
   // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
   var spec = fs.readFileSync(__dirname + '/api/swagger.yaml', 'utf8');
   var swaggerDoc = jsyaml.safeLoad(spec);
+
+  var getSwaggerUIConfig = function(){
+    var result = {};
+  
+    result.scheme = process.env.API_SCHEME;
+    result.domain = process.env.API_DOMAIN;
+    result.port = process.env.API_PORT;
+    result.existingPort = process.env.PORT; // assigned by Heroku if deployed.
+    
+    return result;
+  
+  }
+  
+  var writeSwaggerUIConfig = function(swaggerDoc, env){
+  
+    var doc = {};
+    doc.scheme = swaggerDoc.schemes[0];  //WILL THROW IF SCHEMES NOT DEFINED IN DOC
+    doc.domain = swaggerDoc.host.split(':')[0];  //WILL THROW IF HOST NOT DEFINED IN DOC 
+    doc.port = swaggerDoc.host.split(':')[1];  //WILL THROW IF PORT NOT DEFINED IN DOC  
+    
+    if (env.existingPort){
+      console.log("remote deployment has already defined port");
+      if(env.port){
+        
+        doc.port = env.port; // override (useful for consistency, or if the remote service is not heroku, and listening on a different port.)
+        console.log("external facing port env variable is set. Updating swagger.yaml with this value: %s", doc.port);
+      }else{
+        doc.port = 443; // override the setting with Heroku's default external facing port
+        console.log("external facing port env variable is unset. Updating swagger.yaml with default value: %s", doc.port);
+      }
+    }else{
+      console.log("local deployment.");
+      if(env.port){
+          doc.port = env.port; //override (useful if you have lots of servers running on local host)
+          console.log("overriding swagger.yaml port to env variable: %s", doc.port);
+      }else{
+          env.port = doc.port;
+          console.log("env varable not defined for port. Setting to default from swagger.yaml: %s ", env.port );
+      }
+    }
+    if(env.domain){
+      doc.domain = env.domain; //override (useful if you want to deploy to a different server than specified in the yaml)
+      console.log("overriding swagger.yaml domain to env variable: %s", doc.domain);
+    }
+    if(env.scheme){
+      doc.scheme = env.scheme; // override (useful if you want to deploy to a different comms scheme than that defined in the yaml.
+      console.log("overriding swagger.yaml scheme to env variable: %s", doc.scheme);
+    }
+    
+    var hostAddrPort = doc.domain + ":" + doc.port;
+    var schemes = [doc.scheme];
+  
+    swaggerDoc.host = hostAddrPort;
+    swaggerDoc.schemes = schemes;
+    
+    return swaggerDoc;
+  }
+  
+  var swaggerUIConfig = getSwaggerUIConfig();
+  swaggerDoc = writeSwaggerUIConfig(swaggerDoc, swaggerUIConfig);
+  var serverPort = swaggerUIConfig.existingPort || swaggerUIConfig.port;
   
   // Initialize the Swagger middleware
   swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
